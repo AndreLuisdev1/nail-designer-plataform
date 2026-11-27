@@ -6,14 +6,14 @@ import {Item} from '@astryxdesign/core/Item';
 import {HStack, VStack} from '@astryxdesign/core/Layout';
 import {List} from '@astryxdesign/core/List';
 import {Heading, Text} from '@astryxdesign/core/Text';
-import {Exemplo} from '@/components/Exemplo';
-import {Faixa} from '@/components/Faixa';
-import {FotoExemplo} from '@/components/FotoExemplo';
-import {ProximosHorarios} from '@/components/ProximosHorarios';
-import {PrecoDuracao} from '@/components/PrecoDuracao';
-import {marca} from '@/content/marca';
-import {servicos} from '@/content/servicos';
-import {trabalhos} from '@/content/portfolio';
+import {Exemplo} from '@/components/ui/Exemplo';
+import {Faixa} from '@/components/layout/Faixa';
+import {FotoExemplo} from '@/components/ui/FotoExemplo';
+import {ProximosHorarios} from '@/features/agendamento/ProximosHorarios';
+import {PrecoDuracao} from '@/components/ui/PrecoDuracao';
+import {marca} from '@/data/marca';
+import {servicos} from '@/data/servicos';
+import {trabalhos} from '@/data/portfolio';
 
 const passos = [
   ['Escolha o serviço e um horário livre', 'Você vê a duração e o valor antes de decidir.'],

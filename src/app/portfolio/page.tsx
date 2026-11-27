@@ -4,9 +4,9 @@ import {Button} from '@astryxdesign/core/Button';
 import {Grid} from '@astryxdesign/core/Grid';
 import {HStack, VStack} from '@astryxdesign/core/Layout';
 import {Heading, Text} from '@astryxdesign/core/Text';
-import {Faixa} from '@/components/Faixa';
-import {FotoExemplo} from '@/components/FotoExemplo';
-import {trabalhos} from '@/content/portfolio';
+import {Faixa} from '@/components/layout/Faixa';
+import {FotoExemplo} from '@/components/ui/FotoExemplo';
+import {trabalhos} from '@/data/portfolio';
 
 export const metadata: Metadata = {
   title: 'Portfólio',

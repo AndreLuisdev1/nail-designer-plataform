@@ -1,11 +1,11 @@
 import type {Metadata, Viewport} from 'next';
 import './globals.css';
 import {Providers} from './providers';
-import {SiteHeader} from '@/components/SiteHeader';
-import {SiteFooter} from '@/components/SiteFooter';
-import {marca} from '@/content/marca';
-import tokens from '../../tokens.json';
-import simbolo from '../../brand/logo-simbolo.svg';
+import {SiteHeader} from '@/components/layout/SiteHeader';
+import {SiteFooter} from '@/components/layout/SiteFooter';
+import {marca} from '@/data/marca';
+import tokens from '@design-system/tokens.json';
+import simbolo from '@design-system/brand/logo-simbolo.svg';
 
 export const metadata: Metadata = {
   title: {default: `${marca.nome} · Alongamento de unhas com hora marcada`, template: `%s · ${marca.nome}`},

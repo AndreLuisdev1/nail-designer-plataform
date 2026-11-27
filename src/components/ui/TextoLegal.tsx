@@ -1,7 +1,7 @@
 import {Banner} from '@astryxdesign/core/Banner';
 import {VStack} from '@astryxdesign/core/Layout';
 import {Heading, Text} from '@astryxdesign/core/Text';
-import {Faixa} from './Faixa';
+import {Faixa} from '@/components/layout/Faixa';
 
 export type Secao = {titulo: string; paragrafos: string[]};
 

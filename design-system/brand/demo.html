@@ -8,9 +8,9 @@
 <link rel="icon" href="logo-simbolo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../tokens.css">
 <style>
-@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-weight: 400 900; font-display: swap; src: url(../public/fonts/bodoni-moda-latin-standard-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Bodoni Moda'; font-style: italic; font-weight: 400 900; font-display: swap; src: url(../public/fonts/bodoni-moda-latin-standard-italic.woff2) format('woff2'); }
-@font-face { font-family: Jost; font-style: normal; font-weight: 100 900; font-display: swap; src: url(../public/fonts/jost-latin-wght-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-weight: 400 900; font-display: swap; src: url(../../public/fonts/bodoni-moda-latin-standard-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Bodoni Moda'; font-style: italic; font-weight: 400 900; font-display: swap; src: url(../../public/fonts/bodoni-moda-latin-standard-italic.woff2) format('woff2'); }
+@font-face { font-family: Jost; font-style: normal; font-weight: 100 900; font-display: swap; src: url(../../public/fonts/jost-latin-wght-normal.woff2) format('woff2'); }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-padding-top: calc(var(--nav-height) + var(--spacing-4)); -webkit-text-size-adjust: 100%; }
@@ -342,7 +342,7 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
       </div>
 
       <h3 class="sub">Pares de contraste (WCAG 2.2 AA)</h3>
-      <p class="support" style="margin-bottom:var(--spacing-4)">Calculados nesta página a partir das variáveis de <code>tokens.css</code>. Texto exige 4,5:1; bordas de controle, indicadores e foco exigem 3:1. O mesmo teste roda em <code>scripts/check-contrast.mjs</code>.</p>
+      <p class="support" style="margin-bottom:var(--spacing-4)">Calculados nesta página a partir das variáveis de <code>tokens.css</code>. Texto exige 4,5:1; bordas de controle, indicadores e foco exigem 3:1. O mesmo teste roda em <code>design-system/scripts/check-contrast.mjs</code>.</p>
       <div class="pairs" id="pairs"></div>
     </div>
   </section>

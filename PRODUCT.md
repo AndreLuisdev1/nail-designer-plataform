@@ -38,7 +38,7 @@ Trocar o agendamento manual (WhatsApp + papel) por um sistema em que a cliente e
 ## Brand Commitments
 
 - **Nome do estúdio: ainda não definido.** Enquanto isso, usar "Estúdio Rachel" marcado como provisório. "Agenda da Rachel" é o nome do projeto.
-- **Logo: ainda não existe.** A logo em `brand/` é provisória e precisa ser fácil de trocar.
+- **Logo: ainda não existe.** A logo em `design-system/brand/` é provisória e precisa ser fácil de trocar.
 - Nunca usar emoji como ícone. Nunca exibir dado fictício sem rótulo.
 - Direção visual: o usuário escolheu de propósito o padrão do setor (rosé e nude, serifa elegante), em vez das direções sorteadas, em 26/11/2026. A régua de acabamento é a de estúdios de beleza premium brasileiros (sem referência específica).
 

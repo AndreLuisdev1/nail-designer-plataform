@@ -1,6 +1,6 @@
 import {horariosLivres, proximosDias, type Agora} from './agenda';
-import {expediente, regras, reservasDeExemplo} from '@/content/agenda-exemplo';
-import {buscarServico} from '@/content/servicos';
+import {expediente, regras, reservasDeExemplo} from '@/data/agenda-exemplo';
+import {buscarServico} from '@/data/servicos';
 
 export type Inicial = {passo: number; servicoId: string; data: string | null; hora: string};
 

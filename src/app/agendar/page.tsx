@@ -3,9 +3,9 @@ import {Suspense} from 'react';
 import {Skeleton} from '@astryxdesign/core/Skeleton';
 import {HStack, VStack} from '@astryxdesign/core/Layout';
 import {Heading, Text} from '@astryxdesign/core/Text';
-import {Exemplo} from '@/components/Exemplo';
-import {Faixa} from '@/components/Faixa';
-import {Agendamento} from './Agendamento';
+import {Exemplo} from '@/components/ui/Exemplo';
+import {Faixa} from '@/components/layout/Faixa';
+import {Agendamento} from '@/features/agendamento/Agendamento';
 
 export const metadata: Metadata = {
   title: 'Agendar horário',

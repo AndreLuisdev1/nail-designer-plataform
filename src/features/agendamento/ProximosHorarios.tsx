@@ -9,11 +9,17 @@ import {Link} from '@astryxdesign/core/Link';
 import {RadioList, RadioListItem} from '@astryxdesign/core/RadioList';
 import {Skeleton} from '@astryxdesign/core/Skeleton';
 import {Heading, Text} from '@astryxdesign/core/Text';
-import {Exemplo} from './Exemplo';
-import {useAgora} from '@/lib/useAgora';
-import {formatarData, formatarDuracao, formatarPreco, horariosLivres, proximosDias} from '@/lib/agenda';
-import {expediente, regras, reservasDeExemplo} from '@/content/agenda-exemplo';
-import {buscarServico, servicoPrincipal, servicos} from '@/content/servicos';
+import {Exemplo} from '@/components/ui/Exemplo';
+import {useAgora} from '@/features/agendamento/lib/useAgora';
+import {
+  formatarData,
+  formatarDuracao,
+  formatarPreco,
+  horariosLivres,
+  proximosDias,
+} from '@/features/agendamento/lib/agenda';
+import {expediente, regras, reservasDeExemplo} from '@/data/agenda-exemplo';
+import {buscarServico, servicoPrincipal, servicos} from '@/data/servicos';
 
 const POR_DIA = 4;
 

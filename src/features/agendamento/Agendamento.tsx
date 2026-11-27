@@ -16,8 +16,8 @@ import {Skeleton} from '@astryxdesign/core/Skeleton';
 import {Step, Stepper} from '@astryxdesign/core/Stepper';
 import {Heading, Text} from '@astryxdesign/core/Text';
 import {TextInput} from '@astryxdesign/core/TextInput';
-import {Exemplo} from '@/components/Exemplo';
-import {PrecoDuracao} from '@/components/PrecoDuracao';
+import {Exemplo} from '@/components/ui/Exemplo';
+import {PrecoDuracao} from '@/components/ui/PrecoDuracao';
 import {
   aplicarCupom,
   formatarDataLonga,
@@ -26,13 +26,13 @@ import {
   horariosLivres,
   proximosDias,
   type Agora,
-} from '@/lib/agenda';
-import {useAgora} from '@/lib/useAgora';
-import {lerParametros, type Inicial} from '@/lib/parametros';
-import {validarDados, type Dados} from '@/lib/validacao';
-import {cupons, expediente, regras, reservasDeExemplo} from '@/content/agenda-exemplo';
-import {marca} from '@/content/marca';
-import {buscarServico, servicos} from '@/content/servicos';
+} from '@/features/agendamento/lib/agenda';
+import {useAgora} from '@/features/agendamento/lib/useAgora';
+import {lerParametros, type Inicial} from '@/features/agendamento/lib/parametros';
+import {validarDados, type Dados} from '@/features/agendamento/lib/validacao';
+import {cupons, expediente, regras, reservasDeExemplo} from '@/data/agenda-exemplo';
+import {marca} from '@/data/marca';
+import {buscarServico, servicos} from '@/data/servicos';
 
 const PASSOS = ['Serviço', 'Dia e horário', 'Seus dados', 'Revisão'] as const;
 

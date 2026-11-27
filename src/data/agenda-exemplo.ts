@@ -1,5 +1,5 @@
 // Agenda de EXEMPLO: expediente, reservas e cupons fictícios, sem backend.
-import type {Cupom, Expediente, Reserva} from '@/lib/agenda';
+import type {Cupom, Expediente, Reserva} from '@/features/agendamento/lib/agenda';
 
 export const expediente: Expediente = {
   2: [

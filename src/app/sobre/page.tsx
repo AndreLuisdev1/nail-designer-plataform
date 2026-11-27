@@ -3,10 +3,10 @@ import {Button} from '@astryxdesign/core/Button';
 import {Grid} from '@astryxdesign/core/Grid';
 import {HStack, VStack} from '@astryxdesign/core/Layout';
 import {Heading, Text} from '@astryxdesign/core/Text';
-import {Exemplo} from '@/components/Exemplo';
-import {Faixa} from '@/components/Faixa';
-import {FotoExemplo} from '@/components/FotoExemplo';
-import {marca} from '@/content/marca';
+import {Exemplo} from '@/components/ui/Exemplo';
+import {Faixa} from '@/components/layout/Faixa';
+import {FotoExemplo} from '@/components/ui/FotoExemplo';
+import {marca} from '@/data/marca';
 
 export const metadata: Metadata = {
   title: 'Sobre',

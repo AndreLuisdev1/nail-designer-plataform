@@ -10,8 +10,8 @@ import {Button} from '@astryxdesign/core/Button';
 import {HStack} from '@astryxdesign/core/Layout';
 import {Icon} from '@astryxdesign/core/Icon';
 import {Link} from '@astryxdesign/core/Link';
-import logo from '../../brand/logo-horizontal.svg';
-import {marca} from '@/content/marca';
+import logo from '@design-system/brand/logo-horizontal.svg';
+import {marca} from '@/data/marca';
 
 const paginas = [
   {href: '/servicos', label: 'Serviços'},

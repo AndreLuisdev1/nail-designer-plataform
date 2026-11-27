@@ -6,10 +6,10 @@ import {Item} from '@astryxdesign/core/Item';
 import {HStack, VStack} from '@astryxdesign/core/Layout';
 import {List} from '@astryxdesign/core/List';
 import {Heading, Text} from '@astryxdesign/core/Text';
-import {Exemplo} from '@/components/Exemplo';
-import {Faixa} from '@/components/Faixa';
-import {marca} from '@/content/marca';
-import {expediente} from '@/content/agenda-exemplo';
+import {Exemplo} from '@/components/ui/Exemplo';
+import {Faixa} from '@/components/layout/Faixa';
+import {marca} from '@/data/marca';
+import {expediente} from '@/data/agenda-exemplo';
 
 export const metadata: Metadata = {
   title: 'Contato',

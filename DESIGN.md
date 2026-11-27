@@ -1,10 +1,11 @@
 # Design system: Agenda da Rachel
 
-Versão 0.3 (Etapas 1 a 3). Fonte única dos valores: [tokens.json](tokens.json). [tokens.css](tokens.css) é gerado a partir dele; não edite o CSS à mão.
+Versão 0.3 (Etapas 1 a 3). Fonte única dos valores: [design-system/tokens.json](design-system/tokens.json). [design-system/tokens.css](design-system/tokens.css) é gerado a partir dele; não edite o CSS à mão.
 
 ```bash
-node .claude/skills/design-system/scripts/generate-tokens.cjs --config tokens.json -o tokens.css
-node scripts/check-contrast.mjs        # falha se algum par ficar abaixo do WCAG 2.2 AA
+npm run tokens            # gera design-system/tokens.css a partir do tokens.json
+npm run theme             # gera o tema do Astryx em src/theme/built/
+npm run check:contrast    # falha se algum par ficar abaixo do WCAG 2.2 AA
 ```
 
 Contexto do produto em [PRODUCT.md](PRODUCT.md) e [docs/product/](docs/product/).
@@ -70,7 +71,7 @@ Regras de escrita: português do Brasil; data `qui, 28/11`; hora `14:00` (24 h);
 
 ### Símbolo (provisório, desenhado na Etapa 2)
 
-Um **R** em Bodoni Moda dentro do contorno de uma **unha amendoada**, o formato clássico de alongamento, que é o carro-chefe. Linha fina, sem preenchimento. Arquivos em [brand/](brand/README.md), todos marcados como provisórios: `logo-principal.svg` (símbolo sobre o nome), `logo-horizontal.svg`, `logo-simbolo.svg` e `logo-mono.svg`. Texto convertido em contorno, sem script e sem referência externa. Tamanhos mínimos: símbolo com 32 px de altura, horizontal com 160 px de largura, principal com 140 px. Guia visual: [brand/demo.html](brand/demo.html).
+Um **R** em Bodoni Moda dentro do contorno de uma **unha amendoada**, o formato clássico de alongamento, que é o carro-chefe. Linha fina, sem preenchimento. Arquivos em [design-system/brand/](design-system/brand/README.md), todos marcados como provisórios: `logo-principal.svg` (símbolo sobre o nome), `logo-horizontal.svg`, `logo-simbolo.svg` e `logo-mono.svg`. Texto convertido em contorno, sem script e sem referência externa. Tamanhos mínimos: símbolo com 32 px de altura, horizontal com 160 px de largura, principal com 140 px. Guia visual: [design-system/brand/demo.html](design-system/brand/demo.html).
 
 ### Cores em três níveis
 
@@ -109,7 +110,7 @@ A cor nunca carrega informação sozinha. Status leva ícone e texto; link leva 
 
 ### Contraste WCAG 2.2 AA
 
-Todos os pares abaixo saem de `node scripts/check-contrast.mjs --md`, calculados a partir do tokens.json. Mínimos: 4,5:1 para texto (1.4.3) e 3:1 para bordas de controle, indicadores e foco (1.4.11). Aplicamos 4,5:1 a todo texto, inclusive aos títulos grandes, em que a WCAG aceitaria 3:1.
+Todos os pares abaixo saem de `node design-system/scripts/check-contrast.mjs --md`, calculados a partir do tokens.json. Mínimos: 4,5:1 para texto (1.4.3) e 3:1 para bordas de controle, indicadores e foco (1.4.11). Aplicamos 4,5:1 a todo texto, inclusive aos títulos grandes, em que a WCAG aceitaria 3:1.
 
 <!-- CONTRASTE:INICIO -->
 | Par | Cores | Razão | Mínimo | Resultado |
@@ -418,7 +419,7 @@ Celular (390 px) e desktop (1280 px), antes e depois quando for mudança visual.
 - `src/theme/rachel.ts` estende o tema neutral do Astryx e lê a camada semântica e a de componente do `tokens.json`, sem copiar valores. `npm run theme` compila para `src/theme/built/`; o CI roda `npm run check:theme` e falha se o compilado estiver velho.
 - O neutral troca a tipografia em telas de toque abaixo de 1024 px (fonte Figtree, outra escala). O tema reaplica a nossa nessa mesma condição. Sem isso, o celular perderia Jost e Bodoni.
 - Regras de componente no tema, nunca na página: botão em pílula, botão secundário branco com borda rosé, item ativo do menu com texto rosé e traço inferior, e o selo "Exemplo" (Badge `warning`) em âmbar claro.
-- `tokens.css` continua sendo gerado para o `brand/demo.html`. O site não o importa: as variáveis chegam pelo tema, como pede o Astryx.
+- `tokens.css` continua sendo gerado para o `design-system/brand/demo.html`. O site não o importa: as variáveis chegam pelo tema, como pede o Astryx.
 - Textos internos do Astryx (obrigatório, opcional, etapas, calendário) em pt-BR, via `InternationalizationProvider`. Tema fixo no modo claro.
 
 ### Páginas
@@ -435,8 +436,8 @@ Celular (390 px) e desktop (1280 px), antes e depois quando for mudança visual.
 
 ### Agendamento
 
-- Só aparecem horários em que o serviço cabe inteiro na janela, com 15 min de intervalo entre atendimentos e 2 h de antecedência (RF-12; `src/lib/agenda.ts`, com testes).
-- Parâmetros da URL (`servico`, `data`, `hora`) só valem se baterem com o que a própria agenda gera (`src/lib/parametros.ts`, com testes). Dados pessoais nunca vão para a URL nem para o armazenamento do navegador (testado no e2e).
+- Só aparecem horários em que o serviço cabe inteiro na janela, com 15 min de intervalo entre atendimentos e 2 h de antecedência (RF-12; `src/features/agendamento/lib/agenda.ts`, com testes).
+- Parâmetros da URL (`servico`, `data`, `hora`) só valem se baterem com o que a própria agenda gera (`src/features/agendamento/lib/parametros.ts`, com testes). Dados pessoais nunca vão para a URL nem para o armazenamento do navegador (testado no e2e).
 - Base legal do agendamento: execução de contrato (LGPD, art. 7º, V). Por isso a caixa obrigatória diz "Li e aceito os termos de uso e estou ciente da política de privacidade", e não "aceito a política". Promoções: consentimento separado, opcional e desmarcado.
 - "Continuar" nunca fica desativado: sem escolha, aparece uma mensagem dizendo o que falta. Ao trocar de etapa, o foco vai para o título da etapa.
 - Calendário sem dias de outros meses: eles pareciam indisponíveis.

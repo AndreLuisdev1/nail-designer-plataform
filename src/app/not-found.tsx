@@ -1,7 +1,7 @@
 import {Button} from '@astryxdesign/core/Button';
 import {HStack, VStack} from '@astryxdesign/core/Layout';
 import {Heading, Text} from '@astryxdesign/core/Text';
-import {Faixa} from '@/components/Faixa';
+import {Faixa} from '@/components/layout/Faixa';
 
 export default function NaoEncontrada() {
   return (

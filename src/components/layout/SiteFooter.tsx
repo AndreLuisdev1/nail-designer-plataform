@@ -2,7 +2,7 @@ import {Grid} from '@astryxdesign/core/Grid';
 import {VStack} from '@astryxdesign/core/Layout';
 import {Link} from '@astryxdesign/core/Link';
 import {Text} from '@astryxdesign/core/Text';
-import {marca} from '@/content/marca';
+import {marca} from '@/data/marca';
 
 const links = [
   {href: '/servicos', label: 'Serviços'},

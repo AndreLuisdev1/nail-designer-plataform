@@ -6,11 +6,11 @@ import {Item} from '@astryxdesign/core/Item';
 import {HStack, VStack} from '@astryxdesign/core/Layout';
 import {List} from '@astryxdesign/core/List';
 import {Heading, Text} from '@astryxdesign/core/Text';
-import {Exemplo} from '@/components/Exemplo';
-import {Faixa} from '@/components/Faixa';
-import {PrecoDuracao} from '@/components/PrecoDuracao';
-import {marca} from '@/content/marca';
-import {servicos, type Servico} from '@/content/servicos';
+import {Exemplo} from '@/components/ui/Exemplo';
+import {Faixa} from '@/components/layout/Faixa';
+import {PrecoDuracao} from '@/components/ui/PrecoDuracao';
+import {marca} from '@/data/marca';
+import {servicos, type Servico} from '@/data/servicos';
 
 export const metadata: Metadata = {
   title: 'Serviços e valores',

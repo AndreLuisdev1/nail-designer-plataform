@@ -1,6 +1,6 @@
 import {VStack} from '@astryxdesign/core/Layout';
 import {Text} from '@astryxdesign/core/Text';
-import {formatarDuracao, formatarPreco} from '@/lib/agenda';
+import {formatarDuracao, formatarPreco} from '@/features/agendamento/lib/agenda';
 
 /** Valor e duração sempre juntos e na mesma posição (DESIGN.md: cartão de serviço). */
 export function PrecoDuracao({preco, duracaoMin}: {preco: number; duracaoMin: number}) {

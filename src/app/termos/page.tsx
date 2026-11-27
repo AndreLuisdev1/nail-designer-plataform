@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
-import {TextoLegal} from '@/components/TextoLegal';
-import {marca} from '@/content/marca';
+import {TextoLegal} from '@/components/ui/TextoLegal';
+import {marca} from '@/data/marca';
 
 export const metadata: Metadata = {title: 'Termos de uso'};
 

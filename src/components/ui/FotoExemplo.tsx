@@ -2,7 +2,7 @@ import {AspectRatio} from '@astryxdesign/core/AspectRatio';
 import {Card} from '@astryxdesign/core/Card';
 import {VStack} from '@astryxdesign/core/Layout';
 import {Text} from '@astryxdesign/core/Text';
-import simbolo from '../../brand/logo-simbolo.svg';
+import simbolo from '@design-system/brand/logo-simbolo.svg';
 
 /** Espaço de foto enquanto as imagens reais do portfólio estão em tratamento. Rotulado como exemplo. */
 export function FotoExemplo({titulo, detalhe}: {titulo: string; detalhe?: string}) {

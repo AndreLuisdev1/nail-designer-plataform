@@ -2,7 +2,7 @@
 // Depois de mudar tokens.json: npm run theme
 import {defineTheme} from '@astryxdesign/core/theme';
 import {neutralTheme} from '@astryxdesign/theme-neutral';
-import tokens from '../../tokens.json';
+import tokens from '../../design-system/tokens.json';
 
 type Node = {$value?: string} & {[key: string]: unknown};
 
