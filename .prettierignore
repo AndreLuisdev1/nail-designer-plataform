@@ -1,0 +1,7 @@
+.next
+node_modules
+design-system/tokens.css
+src/theme/built
+.claude
+design-system/brand/demo.html
+package-lock.json
