@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Marca provisória · Estúdio Rachel</title>
+<link rel="icon" href="logo-simbolo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../tokens.css">
+<style>
+@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-weight: 400 900; font-display: swap; src: url(fonts/bodoni-moda-latin-standard-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Bodoni Moda'; font-style: italic; font-weight: 400 900; font-display: swap; src: url(fonts/bodoni-moda-latin-standard-italic.woff2) format('woff2'); }
+@font-face { font-family: Jost; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/jost-latin-wght-normal.woff2) format('woff2'); }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: calc(var(--nav-height) + var(--spacing-4)); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--color-background-body); color: var(--color-text-primary);
+  font-family: var(--font-family-body); font-size: var(--text-body-size); line-height: var(--text-body-leading);
+  overflow-wrap: anywhere;
+}
+::selection { background: var(--color-accent-muted); color: var(--color-text-primary); }
+img, svg { max-width: 100%; }
+:focus-visible { outline: var(--focus-outline-width) var(--focus-outline-style) var(--focus-outline-color); outline-offset: var(--focus-outline-offset); }
+.num { font-variant-numeric: tabular-nums; }
+h1, h2, h3, h4 { font-family: var(--font-family-heading); margin: 0; text-wrap: balance; color: var(--color-text-primary); }
+h1 { font-size: var(--text-display-1-size); font-weight: var(--text-display-1-weight); line-height: var(--text-display-1-leading); letter-spacing: -0.01em; }
+h2 { font-size: var(--text-heading-1-size); font-weight: var(--text-heading-1-weight); line-height: var(--text-heading-1-leading); }
+h3 { font-size: var(--text-heading-3-size); font-weight: var(--text-heading-3-weight); line-height: var(--text-heading-3-leading); }
+h4 { font-size: var(--text-heading-4-size); font-weight: var(--text-heading-4-weight); line-height: var(--text-heading-4-leading); }
+p { margin: 0; max-width: var(--layout-reading-width); }
+.secondary { color: var(--color-text-secondary); }
+.support { font-size: var(--text-supporting-size); line-height: var(--text-supporting-leading); color: var(--color-text-secondary); }
+code { font-family: var(--font-family-code); font-size: 0.875em; }
+
+/* Layout */
+.wrap { width: 100%; max-width: var(--layout-max-width); margin-inline: auto; padding-inline: var(--layout-gutter); }
+@media (min-width: 768px) { .wrap { padding-inline: var(--layout-gutter-md); } }
+section { padding-block: var(--layout-section); }
+section + section { border-top: var(--border-width) solid var(--color-border); }
+.band { background: var(--color-background-brand); border-top: 0 !important; }
+.section-head { display: grid; gap: var(--spacing-3); margin-bottom: var(--spacing-10); }
+.stack { display: grid; gap: var(--spacing-4); }
+.grid { display: grid; gap: var(--spacing-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
+.row { display: flex; flex-wrap: wrap; gap: var(--spacing-3); align-items: center; }
+.sub { margin-top: var(--spacing-12); margin-bottom: var(--spacing-4); }
+
+/* Selo */
+.tag {
+  display: inline-flex; align-items: center; gap: var(--spacing-1-5);
+  font-size: var(--text-label-size); font-weight: var(--text-label-weight); line-height: 1;
+  padding: var(--spacing-1-5) var(--spacing-3); border-radius: var(--radius-full);
+  background: var(--sample-label-bg); color: var(--sample-label-text); border: var(--border-width) solid var(--sample-label-border);
+}
+.tag .icon { width: 1rem; height: 1rem; }
+
+/* Ícone */
+.icon { width: 1.25rem; height: 1.25rem; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Navegação */
+.skip { position: absolute; left: var(--spacing-4); top: -100px; z-index: 20; background: var(--color-background-surface); padding: var(--spacing-3) var(--spacing-4); border-radius: var(--radius-element); color: var(--link-text); }
+.skip:focus { top: var(--spacing-2); }
+.nav { position: sticky; top: 0; z-index: 10; background: var(--nav-bg); border-bottom: var(--border-width) solid var(--nav-border); }
+.nav .wrap { height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-4); }
+.nav-brand { display: flex; align-items: center; gap: var(--spacing-3); min-width: 0; }
+.nav-brand img { height: 40px; width: auto; }
+.nav-links { display: none; list-style: none; margin: 0; padding: 0; gap: var(--spacing-6); }
+.nav-links a { display: inline-flex; align-items: center; min-height: var(--size-element-md); color: var(--nav-text); text-decoration: none; font-weight: var(--font-weight-medium); border-bottom: var(--nav-indicator-height) solid transparent; }
+.nav-links a:hover { color: var(--nav-text-active); }
+.nav-links a[aria-current="page"] { color: var(--nav-text-active); border-bottom-color: var(--nav-indicator); }
+.menu-btn { display: inline-flex; align-items: center; gap: var(--spacing-2); }
+.menu-panel { border-top: var(--border-width) solid var(--nav-border); background: var(--nav-bg); }
+.menu-panel[hidden] { display: none; }
+.menu-panel ul { list-style: none; margin: 0; padding: var(--spacing-2) 0 var(--spacing-4); }
+.menu-panel a { display: flex; align-items: center; min-height: var(--size-element-lg); color: var(--nav-text); text-decoration: none; font-size: var(--font-size-lg); }
+@media (min-width: 1024px) { .nav-links { display: flex; } .menu-btn, .menu-panel { display: none !important; } }
+
+/* Botões */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-2);
+  min-height: var(--button-height); padding-inline: var(--button-padding-x); border-radius: var(--button-radius);
+  font: inherit; font-weight: var(--button-font-weight); line-height: 1.2; text-decoration: none; cursor: pointer;
+  border: var(--border-width) solid transparent;
+  transition: background-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+}
+.btn-primary { background: var(--button-primary-bg); color: var(--button-primary-text); }
+.btn-primary:hover, .btn-primary.is-hover { background: var(--button-primary-bg-hover); }
+.btn-primary:active, .btn-primary.is-active { background: var(--button-primary-bg-active); }
+.btn-secondary { background: var(--button-secondary-bg); color: var(--button-secondary-text); border-color: var(--button-secondary-border); }
+.btn-secondary:hover, .btn-secondary.is-hover { background: var(--button-secondary-bg-hover); }
+.btn-secondary:active, .btn-secondary.is-active { background: var(--color-accent-muted); }
+.btn:disabled, .btn[aria-disabled="true"] { background: var(--button-disabled-bg); color: var(--button-disabled-text); border-color: var(--color-border); cursor: not-allowed; }
+.btn.is-focus { outline: var(--focus-outline-width) var(--focus-outline-style) var(--focus-outline-color); outline-offset: var(--focus-outline-offset); }
+.btn-sm { min-height: var(--size-element-md); padding-inline: var(--spacing-4); font-size: var(--text-label-size); }
+.spinner { width: 1rem; height: 1rem; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.state-grid { display: grid; gap: var(--spacing-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr)); }
+.state { display: grid; gap: var(--spacing-2); justify-items: start; }
+
+/* Campos */
+.field { display: grid; gap: var(--spacing-1-5); max-width: 26rem; }
+.field label, .field .label { font-size: var(--text-label-size); font-weight: var(--text-label-weight); color: var(--input-label); }
+.field .hint { font-size: var(--text-supporting-size); color: var(--input-hint); }
+.input {
+  width: 100%; min-height: var(--input-height); padding-inline: var(--spacing-4); border-radius: var(--input-radius);
+  border: var(--border-width) solid var(--input-border); background: var(--input-bg); color: var(--input-text);
+  font: inherit; font-size: var(--font-size-base);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+.input::placeholder { color: var(--input-placeholder); opacity: 1; }
+.input:hover { border-color: var(--input-border-hover); }
+.input:focus-visible, .input.is-focus { border-color: var(--input-border-focus); outline: var(--focus-outline-width) var(--focus-outline-style) var(--focus-outline-color); outline-offset: var(--focus-outline-offset); }
+.input[aria-invalid="true"] { border-color: var(--input-border-error); border-width: 2px; }
+.input:disabled { background: var(--color-background-muted); color: var(--color-text-disabled); border-color: var(--color-border); }
+.error-msg { display: flex; gap: var(--spacing-1-5); align-items: flex-start; font-size: var(--text-supporting-size); color: var(--input-error-text); font-weight: var(--font-weight-medium); }
+.error-msg .icon { width: 1.125rem; height: 1.125rem; margin-top: 0.1em; }
+.check { display: flex; gap: var(--spacing-3); align-items: flex-start; max-width: 30rem; cursor: pointer; }
+.check input { width: 1.375rem; height: 1.375rem; margin: 0.1em 0 0; flex: none; accent-color: var(--color-accent); }
+.form-grid { display: grid; gap: var(--spacing-8); }
+@media (min-width: 768px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+
+/* Links */
+a { color: var(--link-text); text-decoration-line: underline; text-underline-offset: var(--link-underline-offset); text-decoration-thickness: var(--link-underline-thickness); }
+a:hover { color: var(--link-text-hover); text-decoration-thickness: var(--link-underline-thickness-hover); }
+
+/* Cartão */
+.card { background: var(--card-bg); border: var(--border-width) solid var(--card-border); border-radius: var(--card-radius); padding: var(--card-padding); box-shadow: var(--card-shadow); }
+.service { position: relative; display: grid; gap: var(--spacing-3); max-width: 24rem; transition: box-shadow var(--duration-fast) var(--ease-standard); }
+.service:hover { box-shadow: var(--card-shadow-hover); }
+.service:has(a:focus-visible) { outline: var(--focus-outline-width) var(--focus-outline-style) var(--focus-outline-color); outline-offset: var(--focus-outline-offset); }
+.service a.stretch { color: inherit; text-decoration: none; }
+.service a.stretch::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+.service a.stretch:focus-visible { outline: none; }
+.service .meta { display: flex; flex-wrap: wrap; gap: var(--spacing-2) var(--spacing-4); padding-top: var(--spacing-3); border-top: var(--border-width) solid var(--color-border); color: var(--color-text-secondary); }
+.service .meta span { display: inline-flex; align-items: center; gap: var(--spacing-1-5); }
+.service .price { color: var(--color-text-accent); font-weight: var(--font-weight-semibold); }
+.service .go { display: inline-flex; align-items: center; gap: var(--spacing-1); color: var(--link-text); font-weight: var(--font-weight-medium); }
+
+/* Alertas */
+.alert { display: flex; gap: var(--spacing-3); align-items: flex-start; padding: var(--alert-padding); border-radius: var(--alert-radius); border: var(--alert-border-width) solid; max-width: 40rem; }
+.alert .icon { margin-top: 0.15em; }
+.alert strong { display: block; font-weight: var(--font-weight-semibold); }
+.alert-success { background: var(--alert-success-bg); border-color: var(--alert-success-border); color: var(--alert-success-text); }
+.alert-warning { background: var(--alert-warning-bg); border-color: var(--alert-warning-border); color: var(--alert-warning-text); }
+.alert-error { background: var(--alert-error-bg); border-color: var(--alert-error-border); color: var(--alert-error-text); }
+.alert-info { background: var(--alert-info-bg); border-color: var(--alert-info-border); color: var(--alert-info-text); }
+
+/* Logos */
+.logo-tile { display: grid; gap: var(--spacing-3); }
+.logo-stage { display: grid; place-items: center; min-height: 16rem; padding: var(--spacing-8); border-radius: var(--radius-container); border: var(--border-width) solid var(--color-border); background: var(--color-background-surface); }
+.logo-stage.on-brand { background: var(--color-background-brand); border-color: transparent; }
+.logo-stage.on-body { background: var(--color-background-body); }
+.logo-stage img { height: auto; }
+.logo-meta { display: flex; justify-content: space-between; gap: var(--spacing-2); flex-wrap: wrap; align-items: baseline; }
+.sizes { display: flex; align-items: flex-end; gap: var(--spacing-6); flex-wrap: wrap; }
+.sizes figure { margin: 0; display: grid; gap: var(--spacing-2); justify-items: center; }
+
+/* Paleta */
+.ramp { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--spacing-2); }
+@media (min-width: 768px) { .ramp { grid-template-columns: repeat(10, 1fr); } }
+.chip { display: grid; gap: var(--spacing-1); font-size: var(--font-size-xs); }
+.chip i { display: block; aspect-ratio: 1; border-radius: var(--radius-element); border: var(--border-width) solid var(--color-border); }
+.chip b { font-weight: var(--font-weight-semibold); font-size: var(--font-size-sm); }
+.pairs { display: grid; gap: var(--spacing-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
+.pair { display: grid; grid-template-columns: 4.5rem 1fr; border: var(--border-width) solid var(--color-border); border-radius: var(--radius-element); overflow: hidden; background: var(--color-background-surface); }
+.pair .sample { display: grid; place-items: center; font-family: var(--font-family-heading); font-size: var(--font-size-2xl); border-right: var(--border-width) solid var(--color-border); }
+.pair .sample.ui { font-size: 0; }
+.pair .sample.ui::before { content: ''; width: 2rem; height: 2rem; border-radius: var(--radius-inner); border: 3px solid var(--fg); }
+.pair .info { padding: var(--spacing-3); display: grid; gap: var(--spacing-0-5); font-size: var(--font-size-sm); line-height: 1.4; }
+.pair .info strong { font-weight: var(--font-weight-medium); font-size: var(--font-size-base); }
+.pair .ratio { display: flex; gap: var(--spacing-2); align-items: center; }
+.pass { display: inline-flex; align-items: center; gap: var(--spacing-1); color: var(--color-text-success); font-weight: var(--font-weight-semibold); }
+.fail { color: var(--color-text-error); font-weight: var(--font-weight-semibold); }
+.pass .icon, .fail .icon { width: 1rem; height: 1rem; }
+
+/* Tipografia */
+.type-row { display: grid; gap: var(--spacing-2); padding-block: var(--spacing-5); border-bottom: var(--border-width) solid var(--color-border); }
+.type-row:first-child { padding-top: 0; }
+@media (min-width: 768px) { .type-row { grid-template-columns: 13rem 1fr; gap: var(--spacing-6); align-items: baseline; } }
+.type-spec { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+.type-spec code { display: block; color: var(--color-text-primary); }
+
+/* Ícones */
+.icons { display: grid; gap: var(--spacing-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.5rem), 1fr)); }
+.icons li { display: grid; justify-items: center; gap: var(--spacing-2); padding: var(--spacing-5) var(--spacing-2); border-radius: var(--radius-element); background: var(--color-background-surface); border: var(--border-width) solid var(--color-border); font-size: var(--font-size-sm); color: var(--color-text-secondary); text-align: center; }
+.icons li .icon { width: 1.75rem; height: 1.75rem; color: var(--color-text-primary); }
+ul.plain { list-style: none; margin: 0; padding: 0; }
+
+/* Tom de voz */
+.attrs { display: grid; gap: var(--spacing-8); }
+@media (min-width: 768px) { .attrs { grid-template-columns: repeat(3, 1fr); } }
+.attrs h3 { font-style: italic; margin-bottom: var(--spacing-2); }
+.say { display: grid; gap: var(--spacing-3); }
+.say-row { display: grid; gap: var(--spacing-2); padding: var(--spacing-4); background: var(--color-background-surface); border: var(--border-width) solid var(--color-border); border-radius: var(--radius-element); }
+@media (min-width: 768px) { .say-row { grid-template-columns: 11rem 1fr 1fr; gap: var(--spacing-5); align-items: start; } }
+.say-row .situ { font-weight: var(--font-weight-medium); }
+.do, .dont { display: flex; gap: var(--spacing-2); align-items: flex-start; }
+.do .icon { color: var(--color-text-success); margin-top: 0.15em; }
+.dont .icon { color: var(--color-text-error); margin-top: 0.15em; }
+.dont p { color: var(--color-text-secondary); text-decoration: line-through; text-decoration-color: var(--color-text-error); text-decoration-thickness: 1px; }
+
+/* Rodapé */
+footer { background: var(--color-background-inverted); color: var(--color-text-inverted); padding-block: var(--spacing-12); }
+footer p { max-width: none; }
+footer a { color: var(--color-text-inverted); }
+footer .wrap { display: grid; gap: var(--spacing-3); }
+
+/* Abertura */
+.intro { padding-block: var(--spacing-12) var(--layout-section); }
+.intro .stack { gap: var(--spacing-6); }
+.intro h1 em { font-style: italic; color: var(--color-text-accent); }
+
+@media (min-width: 1024px) { section { padding-block: var(--layout-section-lg); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Ícones: Lucide (ISC, ver LICENSE-lucide.txt). -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 9-5.5 5.5L8 12"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-x-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></symbol>
+</svg>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="nav-brand" href="#conteudo" aria-label="Estúdio Rachel, início do guia">
+      <img src="logo-horizontal.svg" alt="" width="217" height="72">
+    </a>
+    <nav aria-label="Seções do guia">
+      <ul class="nav-links">
+        <li><a href="#logos" aria-current="page">Logo</a></li>
+        <li><a href="#cores">Cores</a></li>
+        <li><a href="#tipografia">Tipografia</a></li>
+        <li><a href="#componentes">Componentes</a></li>
+        <li><a href="#icones">Ícones</a></li>
+        <li><a href="#voz">Tom de voz</a></li>
+      </ul>
+    </nav>
+    <button class="btn btn-secondary btn-sm menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span>
+    </button>
+  </div>
+  <div class="menu-panel" id="menu" hidden>
+    <ul class="wrap">
+      <li><a href="#logos">Logo</a></li>
+      <li><a href="#cores">Cores</a></li>
+      <li><a href="#tipografia">Tipografia</a></li>
+      <li><a href="#componentes">Componentes</a></li>
+      <li><a href="#icones">Ícones</a></li>
+      <li><a href="#voz">Tom de voz</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="intro wrap">
+    <div class="stack">
+      <h1>A marca do <em>Estúdio Rachel</em>, em uma página</h1>
+      <p class="secondary" style="font-size:var(--text-large-size)">Logo, cores, letras, componentes e jeito de falar da Agenda da Rachel. O nome “Estúdio Rachel” e a logo são provisórios e serão trocados quando os oficiais existirem. Os valores vêm de <code>tokens.json</code>.</p>
+      <span class="tag" style="justify-self:start"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Marca e nome provisórios</span>
+    </div>
+  </div>
+
+  <!-- LOGOS -->
+  <section id="logos" class="band" aria-labelledby="h-logos">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="h-logos">Logo e variações</h2>
+        <p class="secondary">Uma unha amendoada, o formato clássico do alongamento, com um R em serifa. O texto está convertido em contorno, então a logo fica igual em qualquer aparelho, mesmo sem as fontes.</p>
+      </div>
+      <div class="grid">
+        <figure class="logo-tile" style="margin:0">
+          <div class="logo-stage"><img src="logo-principal.svg" alt="Logo principal provisória: unha amendoada com R, nome Rachel e a palavra Estúdio" width="240" height="191"></div>
+          <figcaption class="logo-meta"><strong>Principal</strong><code>logo-principal.svg</code></figcaption>
+        </figure>
+        <figure class="logo-tile" style="margin:0">
+          <div class="logo-stage"><img src="logo-horizontal.svg" alt="Logo horizontal provisória: símbolo à esquerda, nome à direita" width="217" height="72"></div>
+          <figcaption class="logo-meta"><strong>Horizontal</strong><code>logo-horizontal.svg</code></figcaption>
+        </figure>
+        <figure class="logo-tile" style="margin:0">
+          <div class="logo-stage"><img src="logo-simbolo.svg" alt="Símbolo provisório: unha amendoada com R" width="64" height="97"></div>
+          <figcaption class="logo-meta"><strong>Só símbolo</strong><code>logo-simbolo.svg</code></figcaption>
+        </figure>
+        <figure class="logo-tile" style="margin:0">
+          <div class="logo-stage on-body"><img src="logo-mono.svg" alt="Logo monocromática provisória, em uma única cor" width="240" height="191"></div>
+          <figcaption class="logo-meta"><strong>Monocromática</strong><code>logo-mono.svg</code></figcaption>
+        </figure>
+      </div>
+
+      <h3 class="sub">Tamanhos mínimos</h3>
+      <div class="sizes card">
+        <figure><img src="logo-simbolo.svg" alt="" width="21" height="32"><figcaption class="support">Símbolo, 32 px de altura</figcaption></figure>
+        <figure><img src="logo-horizontal.svg" alt="" width="160" height="53"><figcaption class="support">Horizontal, 160 px de largura</figcaption></figure>
+        <figure><img src="logo-principal.svg" alt="" width="140" height="111"><figcaption class="support">Principal, 140 px de largura</figcaption></figure>
+      </div>
+      <p class="support" style="margin-top:var(--spacing-4)">Área de respiro em volta da logo: pelo menos a largura da unha do símbolo. Não aplicar sombra, contorno, gradiente nem rotação. Sobre foto, usar a monocromática sobre um véu claro.</p>
+    </div>
+  </section>
+
+  <!-- CORES -->
+  <section id="cores" aria-labelledby="h-cores">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="h-cores">Cores</h2>
+        <p class="secondary">Três níveis: primitivas (os valores), semânticas (o papel de cada cor) e de componente. Os componentes só usam os dois últimos.</p>
+      </div>
+
+      <h3>Primitivas</h3>
+      <div class="stack" style="margin-top:var(--spacing-4)">
+        <div>
+          <p class="support" style="margin-bottom:var(--spacing-2)">Rosé, para a ação, o destaque e a marca</p>
+          <div class="ramp" data-ramp="rose"></div>
+        </div>
+        <div>
+          <p class="support" style="margin-bottom:var(--spacing-2)">Nude, para o texto, os fundos e as bordas</p>
+          <div class="ramp" data-ramp="nude"></div>
+        </div>
+        <div>
+          <p class="support" style="margin-bottom:var(--spacing-2)">Status: sucesso, aviso, erro e informação</p>
+          <div class="ramp" data-ramp="status"></div>
+        </div>
+      </div>
+
+      <h3 class="sub">Pares de contraste (WCAG 2.2 AA)</h3>
+      <p class="support" style="margin-bottom:var(--spacing-4)">Calculados nesta página a partir das variáveis de <code>tokens.css</code>. Texto exige 4,5:1; bordas de controle, indicadores e foco exigem 3:1. O mesmo teste roda em <code>scripts/check-contrast.mjs</code>.</p>
+      <div class="pairs" id="pairs"></div>
+    </div>
+  </section>
+
+  <!-- TIPOGRAFIA -->
+  <section id="tipografia" aria-labelledby="h-tipo">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="h-tipo">Tipografia</h2>
+        <p class="secondary">Bodoni Moda nos títulos, Jost no texto e na interface. As duas ficam no próprio site, sem chamada a servidores de fonte.</p>
+      </div>
+      <div>
+        <div class="type-row"><div class="type-spec">Display<code>--text-display-1</code>Bodoni Moda 400 · 39–61 px</div><h1 style="font-size:var(--text-display-1-size)">Unhas que <em style="font-style:italic;color:var(--color-text-accent)">duram</em></h1></div>
+        <div class="type-row"><div class="type-spec">Título 1<code>--text-heading-1</code>Bodoni Moda 500 · 31 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-1-size);font-weight:500;line-height:var(--text-heading-1-leading)">Serviços e valores</p></div>
+        <div class="type-row"><div class="type-spec">Título 2<code>--text-heading-2</code>Bodoni Moda 500 · 25 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-2-size);font-weight:500;line-height:var(--text-heading-2-leading)">Escolha o seu horário</p></div>
+        <div class="type-row"><div class="type-spec">Título 3<code>--text-heading-3</code>Bodoni Moda 500 · 20 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-3-size);font-weight:500">Alongamento em gel</p></div>
+        <div class="type-row"><div class="type-spec">Título 4<code>--text-heading-4</code>Bodoni Moda 600 · 18 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-4-size);font-weight:600">Manutenção</p></div>
+        <div class="type-row"><div class="type-spec">Abertura<code>--text-large</code>Jost 400 · 18 px</div><p style="font-size:var(--text-large-size);line-height:var(--text-large-leading)">Atendimento em casa, com hora marcada. Você escolhe o serviço, vê o valor e a duração, e confirma em poucos toques.</p></div>
+        <div class="type-row"><div class="type-spec">Corpo<code>--text-body</code>Jost 400 · 16 px</div><p>O alongamento em gel é aplicado sobre a unha natural e moldado no formato que você escolher: amendoada, quadrada, bailarina ou stiletto. A manutenção é feita a cada três ou quatro semanas.</p></div>
+        <div class="type-row"><div class="type-spec">Rótulo<code>--text-label</code>Jost 500 · 14 px</div><p style="font-size:var(--text-label-size);font-weight:500">Celular com DDD (obrigatório)</p></div>
+        <div class="type-row"><div class="type-spec">Apoio<code>--text-supporting</code>Jost 400 · 14 px</div><p class="support">Cancelamentos até 48 h antes do horário.</p></div>
+        <div class="type-row"><div class="type-spec">Números<code>tabular-nums</code>Jost 500</div><p class="num" style="font-weight:500">qui, 28/11 · 14:00 · 2 h 30 · R$ 180,00</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTES -->
+  <section id="componentes" aria-labelledby="h-comp">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="h-comp">Componentes</h2>
+        <p class="secondary">Referência visual. No site, cada peça é um componente do Astryx com estes tokens no tema. Os estados de hover, pressionado e foco aparecem fixos para comparar; use Tab para ver o foco de verdade.</p>
+      </div>
+
+      <h3>Botões</h3>
+      <div class="state-grid" style="margin-top:var(--spacing-4)">
+        <div class="state"><button class="btn btn-primary" type="button">Agendar horário</button><span class="support">Primário</span></div>
+        <div class="state"><button class="btn btn-primary is-hover" type="button" tabindex="-1">Agendar horário</button><span class="support">Hover</span></div>
+        <div class="state"><button class="btn btn-primary is-active" type="button" tabindex="-1">Agendar horário</button><span class="support">Pressionado</span></div>
+        <div class="state"><button class="btn btn-primary is-focus" type="button" tabindex="-1">Agendar horário</button><span class="support">Foco</span></div>
+        <div class="state"><button class="btn btn-primary" type="button" aria-busy="true" tabindex="-1"><span class="spinner" aria-hidden="true"></span>Confirmando</button><span class="support">Carregando</span></div>
+        <div class="state"><button class="btn btn-primary" type="button" disabled>Agendar horário</button><span class="support">Desativado</span></div>
+        <div class="state"><button class="btn btn-secondary" type="button">Ver serviços</button><span class="support">Secundário</span></div>
+        <div class="state"><button class="btn btn-secondary is-hover" type="button" tabindex="-1">Ver serviços</button><span class="support">Hover</span></div>
+        <div class="state"><button class="btn btn-secondary is-focus" type="button" tabindex="-1">Ver serviços</button><span class="support">Foco</span></div>
+      </div>
+
+      <h3 class="sub">Campos de formulário</h3>
+      <form class="form-grid" action="#" onsubmit="return false" novalidate aria-label="Exemplo de formulário, nada é enviado">
+        <div class="stack" style="gap:var(--spacing-6)">
+          <div class="field">
+            <label for="f-nome">Nome (obrigatório)</label>
+            <input class="input" id="f-nome" name="nome" autocomplete="name" placeholder="Como você quer ser chamada">
+          </div>
+          <div class="field">
+            <label for="f-tel">Celular com DDD (obrigatório)</label>
+            <span class="hint" id="f-tel-hint">Usamos só para confirmar o horário.</span>
+            <input class="input is-focus" id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="f-tel-hint" value="11 9">
+            <span class="support">Estado de foco</span>
+          </div>
+        </div>
+        <div class="stack" style="gap:var(--spacing-6)">
+          <div class="field">
+            <label for="f-mail">E-mail (obrigatório)</label>
+            <input class="input" id="f-mail" name="email" type="email" autocomplete="email" aria-invalid="true" aria-describedby="f-mail-err" value="ana@exemplo">
+            <span class="error-msg" id="f-mail-err"><svg class="icon" aria-hidden="true"><use href="#i-x-circle"/></svg>Falta o final do e-mail, por exemplo ana@exemplo.com.</span>
+          </div>
+          <div class="field">
+            <label for="f-dis">Cupom</label>
+            <input class="input" id="f-dis" disabled value="Indisponível neste serviço">
+          </div>
+          <label class="check"><input type="checkbox" name="promo"><span>Quero receber promoções por e-mail (opcional, você pode sair quando quiser).</span></label>
+        </div>
+      </form>
+
+      <h3 class="sub">Links</h3>
+      <p>Leia a <a href="#voz">política de privacidade</a> antes de criar sua conta. Ainda com dúvida? <a href="#voz">Fale com a Rachel pelo WhatsApp</a>.</p>
+
+      <h3 class="sub">Cartão de serviço</h3>
+      <div class="grid">
+        <article class="card service">
+          <h4><a class="stretch" href="#componentes">Alongamento em gel</a></h4>
+          <p class="secondary">Aplicado sobre a unha natural, no formato que você escolher.</p>
+          <div class="meta num"><span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>2 h 30</span><span class="price">R$ 180</span><span class="tag">Exemplo</span></div>
+          <span class="go" aria-hidden="true">Ver horários <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+        </article>
+        <article class="card service">
+          <h4><a class="stretch" href="#componentes">Manutenção do alongamento</a></h4>
+          <p class="secondary">Preenchimento do crescimento e reforço da estrutura.</p>
+          <div class="meta num"><span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>1 h 30</span><span class="price">R$ 120</span><span class="tag">Exemplo</span></div>
+          <span class="go" aria-hidden="true">Ver horários <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+        </article>
+      </div>
+      <p class="support" style="margin-top:var(--spacing-3)">Serviços, durações e valores fictícios, só para mostrar o formato.</p>
+
+      <h3 class="sub">Alertas</h3>
+      <div class="stack">
+        <div class="alert alert-success" role="status"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Horário marcado</strong>Quinta, 28/11, às 14:00. Você recebe um lembrete por e-mail.</div></div>
+        <div class="alert alert-warning"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><div><strong>Aguardando a Rachel</strong>Seu pedido de reagendamento foi enviado. O novo horário fica reservado até ela responder.</div></div>
+        <div class="alert alert-error"><svg class="icon" aria-hidden="true"><use href="#i-x-circle"/></svg><div><strong>Esse horário acabou de ser reservado</strong>Escolha outro horário livre abaixo.</div></div>
+        <div class="alert alert-info"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><div><strong>Prazo de cancelamento</strong>Pelo site, até 48 h antes. Depois disso, fale com a Rachel pelo WhatsApp.</div></div>
+      </div>
+
+      <h3 class="sub">Foco visível</h3>
+      <p class="secondary" style="margin-bottom:var(--spacing-4)">Um anel só para tudo: 2 px em rosé escuro, afastado 3 px. Pressione Tab aqui para conferir.</p>
+      <div class="row">
+        <button class="btn btn-primary" type="button">Botão</button>
+        <a href="#componentes">Link de texto</a>
+        <input class="input" style="max-width:14rem" aria-label="Campo de teste de foco" placeholder="Campo">
+        <label class="check" style="align-items:center"><input type="checkbox">Caixa de seleção</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÍCONES -->
+  <section id="icones" aria-labelledby="h-icones">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="h-icones">Ícones</h2>
+        <p class="secondary">Conjunto Lucide, traço de 1,75 px, cantos arredondados, sempre acompanhando um texto. Nunca emoji.</p>
+      </div>
+      <ul class="plain icons">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Data</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Duração e hora</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>Endereço</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-message"/></svg>WhatsApp</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Celular</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>E-mail</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>Minha conta</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-hand"/></svg>Serviço</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>Promoção</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Sucesso</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Aviso</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-x-circle"/></svg>Erro</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Informação</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>Menu</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Fechar</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>Avançar</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TOM DE VOZ -->
+  <section id="voz" class="band" aria-labelledby="h-voz">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="h-voz">Tom de voz</h2>
+        <p class="secondary">Como a Rachel fala com as clientes, só que por escrito.</p>
+      </div>
+      <div class="attrs">
+        <div><h3>Acolhedora</h3><p>“Você”, frase curta, sem formalidade de empresa. Chama pelo primeiro nome, nunca por “querida”.</p></div>
+        <div><h3>Clara</h3><p>Preço, duração, horário e regra aparecem antes de a cliente precisar perguntar.</p></div>
+        <div><h3>Cuidadosa</h3><p>Cuida da mão e dos dados da cliente, e explica o porquê quando pede alguma coisa.</p></div>
+      </div>
+
+      <h3 class="sub">Certo e errado</h3>
+      <div class="say">
+        <div class="say-row"><span class="situ">Chamada principal</span><div class="do"><svg class="icon" aria-label="Certo" role="img"><use href="#i-check"/></svg><p>Escolha o serviço e veja os horários livres.</p></div><div class="dont"><svg class="icon" aria-label="Errado" role="img"><use href="#i-x-circle"/></svg><p>Clique aqui e agende seu momento mágico de autocuidado!</p></div></div>
+        <div class="say-row"><span class="situ">Serviço</span><div class="do"><svg class="icon" aria-label="Certo" role="img"><use href="#i-check"/></svg><p class="num">Manutenção do alongamento · 1 h 30 · R$ 120</p></div><div class="dont"><svg class="icon" aria-label="Errado" role="img"><use href="#i-x-circle"/></svg><p>Manutenção top com preço imperdível</p></div></div>
+        <div class="say-row"><span class="situ">Horário tomado</span><div class="do"><svg class="icon" aria-label="Certo" role="img"><use href="#i-check"/></svg><p>Esse horário acabou de ser reservado. Escolha outro abaixo.</p></div><div class="dont"><svg class="icon" aria-label="Errado" role="img"><use href="#i-x-circle"/></svg><p>Ops! Erro ao agendar.</p></div></div>
+        <div class="say-row"><span class="situ">Erro de campo</span><div class="do"><svg class="icon" aria-label="Certo" role="img"><use href="#i-check"/></svg><p>Digite o celular com DDD, por exemplo 11 91234-5678.</p></div><div class="dont"><svg class="icon" aria-label="Errado" role="img"><use href="#i-x-circle"/></svg><p>Campo inválido.</p></div></div>
+        <div class="say-row"><span class="situ">Fora do prazo</span><div class="do"><svg class="icon" aria-label="Certo" role="img"><use href="#i-check"/></svg><p>O prazo para cancelar pelo site terminou. Fale com a Rachel pelo WhatsApp.</p></div><div class="dont"><svg class="icon" aria-label="Errado" role="img"><use href="#i-x-circle"/></svg><p>Cancelamento bloqueado.</p></div></div>
+        <div class="say-row"><span class="situ">Confirmação</span><div class="do"><svg class="icon" aria-label="Certo" role="img"><use href="#i-check"/></svg><p>Pronto, Ana. Quinta, 28/11, às 14:00.</p></div><div class="dont"><svg class="icon" aria-label="Errado" role="img"><use href="#i-x-circle"/></svg><p>Agendamento realizado com sucesso!!!</p></div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Estúdio Rachel</strong> · nome e logo provisórios · guia da marca v0.1</p>
+    <p class="support" style="color:var(--color-text-inverted)">Fontes Bodoni Moda e Jost (SIL OFL 1.1) e ícones Lucide (ISC), todos guardados nesta pasta. Esta página não carrega nada da internet.</p>
+  </div>
+</footer>
+
+<script>
+// Menu do celular: abre e fecha, Esc fecha e devolve o foco.
+(() => {
+  const btn = document.querySelector('.menu-btn'), panel = document.getElementById('menu');
+  const set = (open) => { btn.setAttribute('aria-expanded', open); panel.hidden = !open; btn.querySelector('span').textContent = open ? 'Fechar' : 'Menu'; btn.querySelector('use').setAttribute('href', open ? '#i-x' : '#i-menu'); };
+  btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
+  panel.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { set(false); btn.focus(); } });
+})();
+
+// Paleta e contraste lidos das variáveis de tokens.css: a página não pode divergir dos tokens.
+(() => {
+  const css = getComputedStyle(document.documentElement);
+  const v = (name) => css.getPropertyValue(name).trim();
+  const lum = (hex) => { const n = hex.replace('#', ''); return [0, 2, 4].map((i) => { const c = parseInt(n.slice(i, i + 2), 16) / 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; }).reduce((s, c, i) => s + c * [0.2126, 0.7152, 0.0722][i], 0); };
+  const ratio = (a, b) => { const [h, l] = [lum(a), lum(b)].sort((x, y) => y - x); return (h + 0.05) / (l + 0.05); };
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
+
+  const steps = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
+  const ramps = { rose: steps.map((s) => ['rose', s]), nude: steps.map((s) => ['nude', s]),
+    status: ['green', 'amber', 'red', 'blue'].flatMap((c) => ['50', '600', '700'].map((s) => [c, s])) };
+  for (const [key, list] of Object.entries(ramps)) {
+    const box = document.querySelector(`[data-ramp="${key}"]`);
+    for (const [c, s] of list) {
+      const hex = v(`--primitive-color-${c}-${s}`);
+      const chip = el('div', 'chip'); const sw = el('i'); sw.style.background = hex;
+      chip.append(sw, el('b', '', `${c} ${s}`), el('code', '', hex)); box.append(chip);
+    }
+  }
+
+  const pairs = [
+    ['Texto principal', '--color-text-primary', '--color-background-body', 4.5],
+    ['Texto principal no cartão', '--color-text-primary', '--color-background-surface', 4.5],
+    ['Texto principal na faixa rosé', '--color-text-primary', '--color-background-brand', 4.5],
+    ['Texto secundário', '--color-text-secondary', '--color-background-body', 4.5],
+    ['Texto secundário no fundo suave', '--color-text-secondary', '--color-background-muted', 4.5],
+    ['Destaque e preço', '--color-text-accent', '--color-background-surface', 4.5],
+    ['Destaque na faixa rosé', '--color-text-accent', '--color-background-brand', 4.5],
+    ['Rodapé', '--color-text-inverted', '--color-background-inverted', 4.5],
+    ['Botão primário', '--button-primary-text', '--button-primary-bg', 4.5],
+    ['Botão primário, hover', '--button-primary-text', '--button-primary-bg-hover', 4.5],
+    ['Botão secundário', '--button-secondary-text', '--button-secondary-bg', 4.5],
+    ['Link', '--link-text', '--color-background-body', 4.5],
+    ['Placeholder do campo', '--input-placeholder', '--input-bg', 4.5],
+    ['Mensagem de erro do campo', '--input-error-text', '--color-background-body', 4.5],
+    ['Alerta de sucesso', '--alert-success-text', '--alert-success-bg', 4.5],
+    ['Alerta de aviso', '--alert-warning-text', '--alert-warning-bg', 4.5],
+    ['Alerta de erro', '--alert-error-text', '--alert-error-bg', 4.5],
+    ['Alerta de informação', '--alert-info-text', '--alert-info-bg', 4.5],
+    ['Selo “Exemplo”', '--sample-label-text', '--sample-label-bg', 4.5],
+    ['Borda do campo', '--input-border', '--input-bg', 3, true],
+    ['Indicador da navegação', '--nav-indicator', '--nav-bg', 3, true],
+    ['Anel de foco', '--focus-outline-color', '--color-background-body', 3, true],
+    ['Anel de foco na faixa rosé', '--focus-outline-color', '--color-background-brand', 3, true],
+  ];
+  const box = document.getElementById('pairs');
+  for (const [label, fg, bg, min, ui] of pairs) {
+    const a = v(fg), b = v(bg), r = ratio(a, b), ok = r >= min;
+    const card = el('div', 'pair');
+    const sample = el('div', ui ? 'sample ui' : 'sample', 'Aa');
+    sample.style.background = b; sample.style.color = a; sample.style.setProperty('--fg', a);
+    if (ui) sample.setAttribute('aria-hidden', 'true');
+    const info = el('div', 'info');
+    const res = el('span', ok ? 'pass' : 'fail');
+    res.innerHTML = `<svg class="icon" aria-hidden="true"><use href="#${ok ? 'i-check' : 'i-x-circle'}"/></svg>`;
+    res.append(ok ? 'passa' : 'falha');
+    const rr = el('span', 'ratio num'); rr.append(el('span', '', `${r.toFixed(2).replace('.', ',')}:1 (mín. ${String(min).replace('.', ',')}:1)`), res);
+    info.append(el('strong', '', label), el('code', 'secondary', `${a} sobre ${b}`), rr);
+    card.append(sample, info); box.append(card);
+  }
+})();
+</script>
+</body>
+</html>
