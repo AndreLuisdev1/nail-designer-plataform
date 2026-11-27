@@ -1,6 +1,6 @@
 # Design system: Agenda da Rachel
 
-Versão 0.2 (Etapas 1 e 2). Fonte única dos valores: [tokens.json](tokens.json). [tokens.css](tokens.css) é gerado a partir dele; não edite o CSS à mão.
+Versão 0.3 (Etapas 1 a 3). Fonte única dos valores: [tokens.json](tokens.json). [tokens.css](tokens.css) é gerado a partir dele; não edite o CSS à mão.
 
 ```bash
 node .claude/skills/design-system/scripts/generate-tokens.cjs --config tokens.json -o tokens.css
@@ -176,7 +176,7 @@ Proibido: rosé 400 ou mais claro como cor de texto; texto branco sobre rose-500
 
 Ambas têm licença SIL Open Font License 1.1 e acentuação completa do português.
 
-**Fontes auto-hospedadas.** Arquivos `.woff2` em `brand/fonts/` (Bodoni Moda normal e itálico e Jost normal, 126 KB no total), com subconjunto latin, que já cobre toda a acentuação do português, `font-display: swap`, servidos do mesmo domínio. Nenhuma requisição a Google Fonts ou a qualquer CDN em tempo de execução. Pré-carregar só dois arquivos: Jost regular e Bodoni Moda regular. Fallbacks com métricas próximas (Georgia, Segoe UI e system-ui) para reduzir o salto de layout.
+**Fontes auto-hospedadas.** Arquivos `.woff2` em `public/fonts/` (Bodoni Moda normal e itálico e Jost normal, 126 KB no total), com subconjunto latin, que já cobre toda a acentuação do português, `font-display: swap`, servidos do mesmo domínio. Nenhuma requisição a Google Fonts ou a qualquer CDN em tempo de execução. Pré-carregar só dois arquivos: Jost regular e Bodoni Moda regular. Fallbacks com métricas próximas (Georgia, Segoe UI e system-ui) para reduzir o salto de layout.
 
 **Escala** (terça maior, razão 1,25, base 16 px):
 
@@ -313,7 +313,7 @@ Já definido no CLAUDE.md: `@astryxdesign/core` (React 19 + StyleX) e Tailwind s
 | Framework e build | **Next.js (App Router) + TypeScript estrito** | É o caminho de instalação que o próprio Astryx documenta como o mais simples, com CSS pré-compilado e sem plugin de StyleX, gera HTML estático para SEO e depois recebe o backend do agendamento no mesmo projeto. |
 | Gerenciador de pacotes | **npm** | Já vem com o Node 22 instalado aqui; nenhuma ferramenta a mais para manter. |
 | Estilo de layout | **Tailwind CSS v4** com o tema gerado do tokens.json | A v4 lê variáveis CSS nativamente, então o tema do Tailwind espelha os tokens sem duplicar valor. |
-| Fontes | **`next/font/local`** com os `.woff2` no repositório | Auto-hospeda, faz subconjunto e pré-carregamento, e gera fallback com métricas ajustadas, sem chamada externa. |
+| Fontes | **`@font-face` próprio** em `src/app/globals.css`, arquivos em `public/fonts/`, com `preload` dos dois principais | Mudou na Etapa 3: o `next/font` renomeia a família com hash, e os nomes precisam bater com os do tokens.json (fonte única). |
 | Testes unitários e de componente | **Vitest + Testing Library** | Rápido, com a mesma sintaxe do Jest, e testa o comportamento acessível (por papel e rótulo), não a implementação. |
 | Testes ponta a ponta | **Playwright** | Roda o fluxo de agendamento em viewport de celular real e verifica rolagem horizontal em 320 px. |
 | Acessibilidade automatizada | **@axe-core/playwright** | Pega no CI as regressões de WCAG que o olho deixa passar; não substitui o teste com teclado e leitor de tela. |
@@ -343,7 +343,7 @@ Fora da stack, de propósito: commitlint e husky (a convenção de commit está 
 
 ### Desempenho
 
-Metas para as páginas públicas, num celular intermediário em 4G: LCP abaixo de 2,5 s, INP abaixo de 200 ms, CLS abaixo de 0,1; JS inicial abaixo de 150 KB gzip; fontes abaixo de 150 KB no total. Imagens em AVIF ou WebP com `srcset`/`sizes`, dimensões declaradas, e `loading="lazy"` fora da primeira tela. Páginas públicas geradas como estáticas.
+Metas para as páginas públicas, num celular intermediário em 4G: LCP abaixo de 2,5 s, INP abaixo de 200 ms, CLS abaixo de 0,1; fontes abaixo de 150 KB no total (126 KB hoje). **JS inicial: a meta de 150 KB gzip não é atingível com o Astryx.** Medido na Etapa 3, a página de serviços (só lista) tem 340 KB, a inicial 357 KB e o agendamento 397 KB; React mais Next somam uns 150 KB, e o resto é a base do Astryx (camadas, popover, interação de toque). Nova meta: não passar de 400 KB e acompanhar a cada PR. Para reduzir, levar o caso ao Astryx (`npx astryx gap-report`), em vez de trocar de biblioteca. Imagens em AVIF ou WebP com `srcset`/`sizes`, dimensões declaradas, e `loading="lazy"` fora da primeira tela. Páginas públicas geradas como estáticas.
 
 ### SEO
 
@@ -402,6 +402,49 @@ Celular (390 px) e desktop (1280 px), antes e depois quando for mudança visual.
 ## 9. Pendências desta versão
 
 - Nome oficial do estúdio e logo (a da Etapa 2 é provisória).
-- Fotos reais do portfólio: até lá, espaços rotulados "Exemplo".
-- Mapeamento `defineTheme` do Astryx e tema do Tailwind a partir do tokens.json: Etapa 3.
-- Este arquivo será atualizado na Etapa 3 com as decisões das páginas.
+- Fotos reais do portfólio e retrato da Rachel: até lá, espaços rotulados "Foto de exemplo".
+- Número de WhatsApp, Instagram, e-mail e endereço reais (hoje fictícios e rotulados).
+- Canal de avisos (e-mail ou WhatsApp): o site não promete lembrete enquanto isso não for decidido.
+- Política de privacidade e termos: rascunhos, precisam de revisão profissional antes de dados reais.
+- CSP com nonce (hoje `'unsafe-inline'` em script, aceitável sem backend).
+- Depoimentos: a seção existe nos requisitos (RF-03), mas não foi desenhada para não inventar avaliações.
+
+---
+
+## 10. Decisões do site (Etapa 3)
+
+### Tema e tokens no código
+
+- `src/theme/rachel.ts` estende o tema neutral do Astryx e lê a camada semântica e a de componente do `tokens.json`, sem copiar valores. `npm run theme` compila para `src/theme/built/`; o CI roda `npm run check:theme` e falha se o compilado estiver velho.
+- O neutral troca a tipografia em telas de toque abaixo de 1024 px (fonte Figtree, outra escala). O tema reaplica a nossa nessa mesma condição. Sem isso, o celular perderia Jost e Bodoni.
+- Regras de componente no tema, nunca na página: botão em pílula, botão secundário branco com borda rosé, item ativo do menu com texto rosé e traço inferior, e o selo "Exemplo" (Badge `warning`) em âmbar claro.
+- `tokens.css` continua sendo gerado para o `brand/demo.html`. O site não o importa: as variáveis chegam pelo tema, como pede o Astryx.
+- Textos internos do Astryx (obrigatório, opcional, etapas, calendário) em pt-BR, via `InternationalizationProvider`. Tema fixo no modo claro.
+
+### Páginas
+
+| Página | Estrutura | Decisão |
+|---|---|---|
+| Início | Título à esquerda, bloco "Horários livres" à direita (no celular, um abaixo do outro) | A primeira tela já é a agenda: tocar num horário abre o agendamento com serviço, dia e hora preenchidos. Estrutura sorteada na rodada da impeccable (contrato em `.impeccable/surfaces/`). Mostra só os próximos 4 dias com vaga. |
+| Serviços | Lista por categoria (Alongamento, Esmaltação, Cuidados) | Valor e duração sempre à direita, na mesma posição; "Ver horários" em cada serviço. |
+| Portfólio | Grade 4:5 de espaços "Foto de exemplo" com o símbolo da marca | Aviso "Fotos em tratamento" no topo. Sem filtros até existirem fotos. |
+| Agendar | Assistente em 4 etapas (Serviço, Dia e horário, Seus dados, Revisão), com resumo lateral no desktop | Detalhado abaixo. |
+| Sobre | Apresentação e perguntas frequentes | Todo o texto é exemplo e está rotulado; nenhuma afirmação de experiência ou curso. |
+| Contato | Endereço completo, canais e horários de atendimento | Horários derivados do mesmo expediente usado na agenda. WhatsApp "a definir"; nada de link para número ou perfil que pode ser de outra pessoa. |
+| Privacidade e Termos | Texto em largura de leitura, aviso "Rascunho" | Elementos do art. 9º da LGPD. |
+
+### Agendamento
+
+- Só aparecem horários em que o serviço cabe inteiro na janela, com 15 min de intervalo entre atendimentos e 2 h de antecedência (RF-12; `src/lib/agenda.ts`, com testes).
+- Parâmetros da URL (`servico`, `data`, `hora`) só valem se baterem com o que a própria agenda gera (`src/lib/parametros.ts`, com testes). Dados pessoais nunca vão para a URL nem para o armazenamento do navegador (testado no e2e).
+- Base legal do agendamento: execução de contrato (LGPD, art. 7º, V). Por isso a caixa obrigatória diz "Li e aceito os termos de uso e estou ciente da política de privacidade", e não "aceito a política". Promoções: consentimento separado, opcional e desmarcado.
+- "Continuar" nunca fica desativado: sem escolha, aparece uma mensagem dizendo o que falta. Ao trocar de etapa, o foco vai para o título da etapa.
+- Calendário sem dias de outros meses: eles pareciam indisponíveis.
+- Cupom de exemplo `BEMVINDA10` (10%) para mostrar o valor final antes de confirmar.
+
+### Verificação
+
+- `npm test`: 19 testes de agenda, cupom, validação e parâmetros.
+- `npm run test:e2e`: as 8 páginas no celular e no desktop, com axe (WCAG 2.0, 2.1 e 2.2 A/AA) sem violações, sem rolagem horizontal em 320 e 390 px e sem requisição a terceiros; e o fluxo completo de agendamento.
+- `npm run check:contrast`: 50 pares, todos AA.
+

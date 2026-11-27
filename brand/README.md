@@ -8,8 +8,7 @@ O nome "Estúdio Rachel" e a logo desta pasta são **provisórios**. Ainda não 
 | `logo-horizontal.svg` | Símbolo à esquerda, nome à direita (barra de navegação) |
 | `logo-simbolo.svg` | Só o símbolo (favicon, avatar) |
 | `logo-mono.svg` | Principal em uma cor só |
-| `demo.html` | Guia visual da marca. Abre sem internet; depende só de `../tokens.css`, `fonts/` e dos SVGs |
-| `fonts/` | Bodoni Moda e Jost em woff2, subconjunto latin, com as licenças OFL |
+| `demo.html` | Guia visual da marca. Abre sem internet; depende só de `../tokens.css`, `../public/fonts/` e dos SVGs |
 | `LICENSE-lucide.txt` | Licença dos ícones Lucide usados no demo |
 
 ## Como trocar pela logo oficial

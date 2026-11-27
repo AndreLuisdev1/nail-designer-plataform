@@ -119,6 +119,8 @@
   --color-accent: #935356;
   --color-accent-muted: #F5E6E2;
   --color-on-accent: #FFFFFF;
+  --color-on-dark: #FAF7F5;
+  --color-on-light: #241B18;
   --color-on-success: #FFFFFF;
   --color-on-warning: #FFFFFF;
   --color-on-error: #FFFFFF;

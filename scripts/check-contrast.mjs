@@ -45,6 +45,7 @@ const pairs = [
   ['Texto de destaque / superfície', S + 'text.accent', S + 'background.surface', 4.5],
   ['Texto de destaque / fundo da marca', S + 'text.accent', S + 'background.brand', 4.5],
   ['Texto invertido / fundo invertido', S + 'text.inverted', S + 'background.inverted', 4.5],
+  ['Texto sobre escuro / fundo invertido', S + 'on.dark', S + 'background.inverted', 4.5],
   ['Botão primário: texto / fundo', C + 'button.primary-text', C + 'button.primary-bg', 4.5],
   ['Botão primário: texto / hover', C + 'button.primary-text', C + 'button.primary-bg-hover', 4.5],
   ['Botão primário: texto / pressionado', C + 'button.primary-text', C + 'button.primary-bg-active', 4.5],

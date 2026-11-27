@@ -1,0 +1,46 @@
+@layer reset, theme, base, astryx-base, astryx-theme, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import '@astryxdesign/core/reset.css';
+@import '@astryxdesign/core/astryx.css';
+@import '../theme/built/rachel.css';
+@import '@astryxdesign/core/tailwind-theme.css';
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* Fontes auto-hospedadas (public/fonts). Os nomes batem com tokens.json. */
+@font-face {
+  font-family: 'Bodoni Moda';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/bodoni-moda-latin-standard-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Bodoni Moda';
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/bodoni-moda-latin-standard-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: Jost;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/jost-latin-wght-normal.woff2') format('woff2');
+}
+
+@layer base {
+  html {
+    scroll-padding-top: calc(var(--nav-height, 64px) + 1rem);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    overflow-x: clip;
+  }
+  /* Texto longo (e-mail, endereço) quebra em vez de empurrar a página para o lado. */
+  main {
+    overflow-wrap: break-word;
+  }
+}
