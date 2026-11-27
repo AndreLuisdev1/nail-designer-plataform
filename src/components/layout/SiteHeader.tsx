@@ -11,6 +11,7 @@ import {HStack} from '@astryxdesign/core/Layout';
 import {Icon} from '@astryxdesign/core/Icon';
 import {Link} from '@astryxdesign/core/Link';
 import logo from '@design-system/brand/logo-horizontal.svg';
+import simbolo from '@design-system/brand/logo-simbolo.svg';
 import {marca} from '@/data/marca';
 
 const paginas = [
@@ -31,7 +32,15 @@ export function SiteHeader() {
         label="Navegação principal"
         heading={
           <Link href="/" label={`${marca.nome}, página inicial`}>
-            <img src={logo.src} alt="" width={132} height={44} />
+            {/* No celular só o monograma: a logo horizontal (4,8:1) não cabe junto de "Agendar" e "Menu". */}
+            <img src={simbolo.src} alt="" width={44} height={44} className="sm:hidden" />
+            <img
+              src={logo.src}
+              alt=""
+              height={48}
+              width={Math.round((48 * logo.width) / logo.height)}
+              className="hidden sm:block"
+            />
           </Link>
         }
         endContent={

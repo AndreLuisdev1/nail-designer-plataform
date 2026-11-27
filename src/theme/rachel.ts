@@ -47,19 +47,59 @@ export const rachelTheme = defineTheme({
   components: {
     button: {
       base: {borderRadius: component['--button-radius']!},
+      // Dourado da logo com texto escuro (9,7:1); a borda mais escura dá o contorno que o fundo claro sozinho não dá (1,6:1).
+      'variant:primary': {
+        backgroundColor: component['--button-primary-bg']!,
+        color: component['--button-primary-text']!,
+        boxShadow: `inset 0 0 0 1px ${component['--button-primary-border']}`,
+      },
       'variant:secondary': {
         backgroundColor: component['--button-secondary-bg']!,
         color: component['--button-secondary-text']!,
         boxShadow: `inset 0 0 0 1px ${component['--button-secondary-border']}`,
       },
     },
-    // Item ativo do menu: texto rosé + traço inferior, não pílula (DESIGN.md: navegação).
+    // Item ativo do menu: texto escuro + traço dourado inferior, não pílula (DESIGN.md: navegação).
     'top-nav-item': {
       selected: {
         backgroundColor: 'transparent',
         color: component['--nav-text-active']!,
         boxShadow: `inset 0 -${component['--nav-indicator-height']} 0 ${component['--nav-indicator']}`,
         borderRadius: '0',
+      },
+    },
+    // Cada dia do calendário ocupa --size-element-md (44 px no nosso tema): 7 colunas = 308 px, mais que a tela de 320 px.
+    // Encolhe (md e sm juntos) só quando falta espaço (largura da tela menos gutter e padding do cartão), nunca passa de 44 px.
+    calendar: {
+      base: {
+        '--size-element-md': `min(${semantic['--size-element-md']}, calc((100vw - 68px) / 7))`,
+        // o botão do dia (sm) precisa ficar 4 px menor que a célula (md), senão o Astryx alarga a célula
+        '--size-element-sm': `min(${semantic['--size-element-sm']}, calc((100vw - 68px) / 7 - 4px))`,
+      },
+    },
+    // Botão de horário: pílula com borda. Marcado: dourado da logo, borda escura de 2 px e negrito,
+    // para o estado não depender só da cor de fundo (o dourado claro tem 1,6:1 contra o branco).
+    'toggle-button': {
+      base: {
+        borderRadius: component['--button-radius']!,
+        backgroundColor: component['--button-secondary-bg']!,
+        color: component['--button-secondary-text']!,
+        boxShadow: `inset 0 0 0 1px ${component['--button-secondary-border']}`,
+      },
+      'isPressed:true': {
+        backgroundColor: component['--button-primary-bg']!,
+        color: component['--button-primary-text']!,
+        boxShadow: `inset 0 0 0 2px ${component['--button-selected-border']}`,
+        fontWeight: semantic['--font-weight-semibold']!,
+      },
+    },
+    // Dia marcado no calendário: igual ao horário marcado.
+    'calendar-day': {
+      selected: {
+        backgroundColor: component['--button-primary-bg']!,
+        color: component['--button-primary-text']!,
+        boxShadow: `inset 0 0 0 2px ${component['--button-selected-border']}`,
+        fontWeight: semantic['--font-weight-semibold']!,
       },
     },
     // Badge de aviso é usado só para o selo "Exemplo" (DESIGN.md: âmbar claro com borda).

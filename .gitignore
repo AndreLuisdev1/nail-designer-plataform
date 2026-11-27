@@ -64,3 +64,8 @@ next-env.d.ts
 .impeccable/review/
 .impeccable/mocks/
 .impeccable/questions/
+
+# Notas pessoais (não versionar)
+O-QUE-FOI-FEITO.md
+
+.vercel

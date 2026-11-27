@@ -6,9 +6,9 @@ import {Card} from '@astryxdesign/core/Card';
 import {Grid} from '@astryxdesign/core/Grid';
 import {HStack, VStack} from '@astryxdesign/core/Layout';
 import {Link} from '@astryxdesign/core/Link';
-import {RadioList, RadioListItem} from '@astryxdesign/core/RadioList';
 import {Skeleton} from '@astryxdesign/core/Skeleton';
 import {Heading, Text} from '@astryxdesign/core/Text';
+import {ToggleButton} from '@astryxdesign/core/ToggleButton';
 import {Exemplo} from '@/components/ui/Exemplo';
 import {useAgora} from '@/features/agendamento/lib/useAgora';
 import {
@@ -53,11 +53,20 @@ export function ProximosHorarios() {
             </Heading>
             <Exemplo />
           </HStack>
-          <RadioList label="Serviço" value={servicoId} onChange={setServicoId} orientation="horizontal">
+          <Text weight="medium">Serviço</Text>
+          {/* Botões soltos: um grupo de rádio horizontal não quebra de linha e partia as palavras em 320 px. */}
+          <HStack as="div" role="group" aria-label="Serviço" gap={2} wrap="wrap">
             {servicos.slice(0, 3).map((s) => (
-              <RadioListItem key={s.id} value={s.id} label={s.nomeCurto} aria-label={s.nome} />
+              <ToggleButton
+                key={s.id}
+                label={s.nome}
+                isPressed={servicoId === s.id}
+                onPressedChange={() => setServicoId(s.id)}
+              >
+                {s.nomeCurto}
+              </ToggleButton>
             ))}
-          </RadioList>
+          </HStack>
           <Text as="p" color="secondary" hasTabularNumbers>
             {formatarDuracao(servico.duracaoMin)} · {formatarPreco(servico.preco)}
           </Text>

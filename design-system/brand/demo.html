@@ -4,12 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Marca provisória · Estúdio Rachel</title>
+<title>Marca · Rachel Ferreira Nail Designer</title>
 <link rel="icon" href="logo-simbolo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../tokens.css">
 <style>
-@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-weight: 400 900; font-display: swap; src: url(../../public/fonts/bodoni-moda-latin-standard-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Bodoni Moda'; font-style: italic; font-weight: 400 900; font-display: swap; src: url(../../public/fonts/bodoni-moda-latin-standard-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Young Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url(../../public/fonts/young-serif-latin-400-normal.woff2) format('woff2'); }
 @font-face { font-family: Jost; font-style: normal; font-weight: 100 900; font-display: swap; src: url(../../public/fonts/jost-latin-wght-normal.woff2) format('woff2'); }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -83,7 +82,7 @@ section + section { border-top: var(--border-width) solid var(--color-border); }
   border: var(--border-width) solid transparent;
   transition: background-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
 }
-.btn-primary { background: var(--button-primary-bg); color: var(--button-primary-text); }
+.btn-primary { background: var(--button-primary-bg); color: var(--button-primary-text); box-shadow: inset 0 0 0 1px var(--button-primary-border); }
 .btn-primary:hover, .btn-primary.is-hover { background: var(--button-primary-bg-hover); }
 .btn-primary:active, .btn-primary.is-active { background: var(--button-primary-bg-active); }
 .btn-secondary { background: var(--button-secondary-bg); color: var(--button-secondary-text); border-color: var(--button-secondary-border); }
@@ -189,7 +188,7 @@ ul.plain { list-style: none; margin: 0; padding: 0; }
 /* Tom de voz */
 .attrs { display: grid; gap: var(--spacing-8); }
 @media (min-width: 768px) { .attrs { grid-template-columns: repeat(3, 1fr); } }
-.attrs h3 { font-style: italic; margin-bottom: var(--spacing-2); }
+.attrs h3 { margin-bottom: var(--spacing-2); }
 .say { display: grid; gap: var(--spacing-3); }
 .say-row { display: grid; gap: var(--spacing-2); padding: var(--spacing-4); background: var(--color-background-surface); border: var(--border-width) solid var(--color-border); border-radius: var(--radius-element); }
 @media (min-width: 768px) { .say-row { grid-template-columns: 11rem 1fr 1fr; gap: var(--spacing-5); align-items: start; } }
@@ -208,7 +207,7 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
 /* Abertura */
 .intro { padding-block: var(--spacing-12) var(--layout-section); }
 .intro .stack { gap: var(--spacing-6); }
-.intro h1 em { font-style: italic; color: var(--color-text-accent); }
+.intro h1 em { font-style: normal; color: var(--color-text-display-accent); }
 
 @media (min-width: 1024px) { section { padding-block: var(--layout-section-lg); } }
 @media (prefers-reduced-motion: reduce) {
@@ -242,8 +241,8 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
 
 <header class="nav">
   <div class="wrap">
-    <a class="nav-brand" href="#conteudo" aria-label="Estúdio Rachel, início do guia">
-      <img src="logo-horizontal.svg" alt="" width="217" height="72">
+    <a class="nav-brand" href="#conteudo" aria-label="Rachel Ferreira Nail Designer, início do guia">
+      <img src="logo-horizontal.svg" alt="" width="307" height="64">
     </a>
     <nav aria-label="Seções do guia">
       <ul class="nav-links">
@@ -275,9 +274,9 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
 
   <div class="intro wrap">
     <div class="stack">
-      <h1>A marca do <em>Estúdio Rachel</em>, em uma página</h1>
-      <p class="secondary" style="font-size:var(--text-large-size)">Logo, cores, letras, componentes e jeito de falar da Agenda da Rachel. O nome “Estúdio Rachel” e a logo são provisórios e serão trocados quando os oficiais existirem. Os valores vêm de <code>tokens.json</code>.</p>
-      <span class="tag" style="justify-self:start"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Marca e nome provisórios</span>
+      <h1>A marca <em>Rachel Ferreira</em>, em uma página</h1>
+      <p class="secondary" style="font-size:var(--text-large-size)">Logo, cores, letras, componentes e jeito de falar da Agenda da Rachel. A logo foi reconstruída a partir da imagem do Instagram até chegar o arquivo oficial. Os valores vêm de <code>tokens.json</code>.</p>
+      <span class="tag" style="justify-self:start"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Logo reconstruída, aguardando o arquivo oficial</span>
     </div>
   </div>
 
@@ -286,34 +285,42 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
     <div class="wrap">
       <div class="section-head">
         <h2 id="h-logos">Logo e variações</h2>
-        <p class="secondary">Uma unha amendoada, o formato clássico do alongamento, com um R em serifa. O texto está convertido em contorno, então a logo fica igual em qualquer aparelho, mesmo sem as fontes.</p>
+        <p class="secondary">Monograma RF caligráfico sobre o nome em maiúsculas clássicas. O monograma foi vetorizado da imagem do Instagram e o nome refeito na fonte Cinzel, tudo convertido em contorno: a logo fica igual em qualquer aparelho, mesmo sem as fontes.</p>
       </div>
       <div class="grid">
         <figure class="logo-tile" style="margin:0">
-          <div class="logo-stage"><img src="logo-principal.svg" alt="Logo principal provisória: unha amendoada com R, nome Rachel e a palavra Estúdio" width="240" height="191"></div>
+          <div class="logo-stage"><img src="logo-principal.svg" alt="Logo principal: monograma RF, Rachel Ferreira, Nail Designer" width="240" height="148"></div>
           <figcaption class="logo-meta"><strong>Principal</strong><code>logo-principal.svg</code></figcaption>
         </figure>
         <figure class="logo-tile" style="margin:0">
-          <div class="logo-stage"><img src="logo-horizontal.svg" alt="Logo horizontal provisória: símbolo à esquerda, nome à direita" width="217" height="72"></div>
+          <div class="logo-stage"><img src="logo-horizontal.svg" alt="Logo horizontal: monograma à esquerda, nome à direita" width="240" height="50"></div>
           <figcaption class="logo-meta"><strong>Horizontal</strong><code>logo-horizontal.svg</code></figcaption>
         </figure>
         <figure class="logo-tile" style="margin:0">
-          <div class="logo-stage"><img src="logo-simbolo.svg" alt="Símbolo provisório: unha amendoada com R" width="64" height="97"></div>
+          <div class="logo-stage"><img src="logo-simbolo.svg" alt="Símbolo: monograma RF" width="96" height="96"></div>
           <figcaption class="logo-meta"><strong>Só símbolo</strong><code>logo-simbolo.svg</code></figcaption>
         </figure>
         <figure class="logo-tile" style="margin:0">
-          <div class="logo-stage on-body"><img src="logo-mono.svg" alt="Logo monocromática provisória, em uma única cor" width="240" height="191"></div>
+          <div class="logo-stage on-body"><img src="logo-mono.svg" alt="Logo monocromática, em uma única cor" width="240" height="148"></div>
           <figcaption class="logo-meta"><strong>Monocromática</strong><code>logo-mono.svg</code></figcaption>
+        </figure>
+        <figure class="logo-tile" style="margin:0">
+          <div class="logo-stage" style="background:var(--color-background-inverted);border-color:transparent"><img src="logo-principal-ouro.svg" alt="Logo principal dourada, para fundo escuro" width="240" height="148"></div>
+          <figcaption class="logo-meta"><strong>Dourada (fundo escuro)</strong><code>logo-principal-ouro.svg</code></figcaption>
+        </figure>
+        <figure class="logo-tile" style="margin:0">
+          <div class="logo-stage" style="background:var(--primitive-color-taupe-500);border-color:transparent"><img src="logo-horizontal-ouro.svg" alt="Logo horizontal dourada, sobre o taupe da logo" width="240" height="50"></div>
+          <figcaption class="logo-meta"><strong>Horizontal dourada</strong><code>logo-horizontal-ouro.svg</code></figcaption>
         </figure>
       </div>
 
       <h3 class="sub">Tamanhos mínimos</h3>
       <div class="sizes card">
-        <figure><img src="logo-simbolo.svg" alt="" width="21" height="32"><figcaption class="support">Símbolo, 32 px de altura</figcaption></figure>
-        <figure><img src="logo-horizontal.svg" alt="" width="160" height="53"><figcaption class="support">Horizontal, 160 px de largura</figcaption></figure>
-        <figure><img src="logo-principal.svg" alt="" width="140" height="111"><figcaption class="support">Principal, 140 px de largura</figcaption></figure>
+        <figure><img src="logo-simbolo.svg" alt="" width="40" height="40"><figcaption class="support">Símbolo, 40 px</figcaption></figure>
+        <figure><img src="logo-horizontal.svg" alt="" width="230" height="48"><figcaption class="support">Horizontal, 48 px de altura</figcaption></figure>
+        <figure><img src="logo-principal.svg" alt="" width="160" height="99"><figcaption class="support">Principal, 160 px de largura</figcaption></figure>
       </div>
-      <p class="support" style="margin-top:var(--spacing-4)">Área de respiro em volta da logo: pelo menos a largura da unha do símbolo. Não aplicar sombra, contorno, gradiente nem rotação. Sobre foto, usar a monocromática sobre um véu claro.</p>
+      <p class="support" style="margin-top:var(--spacing-4)">Área de respiro em volta da logo: pelo menos a altura do "R" do monograma. Não aplicar sombra, contorno, gradiente nem rotação. Sobre foto, usar a monocromática sobre um véu claro.</p>
     </div>
   </section>
 
@@ -328,12 +335,12 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
       <h3>Primitivas</h3>
       <div class="stack" style="margin-top:var(--spacing-4)">
         <div>
-          <p class="support" style="margin-bottom:var(--spacing-2)">Rosé, para a ação, o destaque e a marca</p>
-          <div class="ramp" data-ramp="rose"></div>
+          <p class="support" style="margin-bottom:var(--spacing-2)">Dourado (letras da logo), para a ação, o destaque e a marca</p>
+          <div class="ramp" data-ramp="gold"></div>
         </div>
         <div>
-          <p class="support" style="margin-bottom:var(--spacing-2)">Nude, para o texto, os fundos e as bordas</p>
-          <div class="ramp" data-ramp="nude"></div>
+          <p class="support" style="margin-bottom:var(--spacing-2)">Taupe (fundo da logo), para o texto, os fundos e as bordas</p>
+          <div class="ramp" data-ramp="taupe"></div>
         </div>
         <div>
           <p class="support" style="margin-bottom:var(--spacing-2)">Status: sucesso, aviso, erro e informação</p>
@@ -352,14 +359,14 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
     <div class="wrap">
       <div class="section-head">
         <h2 id="h-tipo">Tipografia</h2>
-        <p class="secondary">Bodoni Moda nos títulos, Jost no texto e na interface. As duas ficam no próprio site, sem chamada a servidores de fonte.</p>
+        <p class="secondary">Young Serif nos títulos, Jost no texto e na interface. As duas ficam no próprio site, sem chamada a servidores de fonte.</p>
       </div>
       <div>
-        <div class="type-row"><div class="type-spec">Display<code>--text-display-1</code>Bodoni Moda 400 · 39–61 px</div><h1 style="font-size:var(--text-display-1-size)">Unhas que <em style="font-style:italic;color:var(--color-text-accent)">duram</em></h1></div>
-        <div class="type-row"><div class="type-spec">Título 1<code>--text-heading-1</code>Bodoni Moda 500 · 31 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-1-size);font-weight:500;line-height:var(--text-heading-1-leading)">Serviços e valores</p></div>
-        <div class="type-row"><div class="type-spec">Título 2<code>--text-heading-2</code>Bodoni Moda 500 · 25 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-2-size);font-weight:500;line-height:var(--text-heading-2-leading)">Escolha o seu horário</p></div>
-        <div class="type-row"><div class="type-spec">Título 3<code>--text-heading-3</code>Bodoni Moda 500 · 20 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-3-size);font-weight:500">Alongamento em gel</p></div>
-        <div class="type-row"><div class="type-spec">Título 4<code>--text-heading-4</code>Bodoni Moda 600 · 18 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-4-size);font-weight:600">Manutenção</p></div>
+        <div class="type-row"><div class="type-spec">Display<code>--text-display-1</code>Young Serif · 39–49 px</div><h1 style="font-size:var(--text-display-1-size)">Unhas que <em style="font-style:normal;color:var(--color-text-display-accent)">duram</em></h1></div>
+        <div class="type-row"><div class="type-spec">Título 1<code>--text-heading-1</code>Young Serif · 31 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-1-size);line-height:var(--text-heading-1-leading)">Serviços e valores</p></div>
+        <div class="type-row"><div class="type-spec">Título 2<code>--text-heading-2</code>Young Serif · 25 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-2-size);line-height:var(--text-heading-2-leading)">Escolha o seu horário</p></div>
+        <div class="type-row"><div class="type-spec">Título 3<code>--text-heading-3</code>Young Serif · 20 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-3-size);">Alongamento em gel</p></div>
+        <div class="type-row"><div class="type-spec">Título 4<code>--text-heading-4</code>Young Serif · 18 px</div><p style="font-family:var(--font-family-heading);font-size:var(--text-heading-4-size);">Manutenção</p></div>
         <div class="type-row"><div class="type-spec">Abertura<code>--text-large</code>Jost 400 · 18 px</div><p style="font-size:var(--text-large-size);line-height:var(--text-large-leading)">Atendimento em casa, com hora marcada. Você escolhe o serviço, vê o valor e a duração, e confirma em poucos toques.</p></div>
         <div class="type-row"><div class="type-spec">Corpo<code>--text-body</code>Jost 400 · 16 px</div><p>O alongamento em gel é aplicado sobre a unha natural e moldado no formato que você escolher: amendoada, quadrada, bailarina ou stiletto. A manutenção é feita a cada três ou quatro semanas.</p></div>
         <div class="type-row"><div class="type-spec">Rótulo<code>--text-label</code>Jost 500 · 14 px</div><p style="font-size:var(--text-label-size);font-weight:500">Celular com DDD (obrigatório)</p></div>
@@ -447,7 +454,7 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
       </div>
 
       <h3 class="sub">Foco visível</h3>
-      <p class="secondary" style="margin-bottom:var(--spacing-4)">Um anel só para tudo: 2 px em rosé escuro, afastado 3 px. Pressione Tab aqui para conferir.</p>
+      <p class="secondary" style="margin-bottom:var(--spacing-4)">Um anel só para tudo: 2 px em marrom escuro, afastado 3 px. Pressione Tab aqui para conferir.</p>
       <div class="row">
         <button class="btn btn-primary" type="button">Botão</button>
         <a href="#componentes">Link de texto</a>
@@ -514,8 +521,8 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
 
 <footer>
   <div class="wrap">
-    <p><strong>Estúdio Rachel</strong> · nome e logo provisórios · guia da marca v0.1</p>
-    <p class="support" style="color:var(--color-text-inverted)">Fontes Bodoni Moda e Jost (SIL OFL 1.1, em public/fonts) e ícones Lucide (ISC), todos guardados no projeto. Esta página não carrega nada da internet.</p>
+    <p><strong>Rachel Ferreira Nail Designer</strong> · logo reconstruída, aguardando o arquivo oficial · guia da marca v0.2</p>
+    <p class="support" style="color:var(--color-text-inverted)">Fontes Young Serif e Jost (SIL OFL 1.1, em public/fonts) e ícones Lucide (ISC), todos guardados no projeto. Esta página não carrega nada da internet.</p>
   </div>
 </footer>
 
@@ -538,7 +545,7 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
 
   const steps = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
-  const ramps = { rose: steps.map((s) => ['rose', s]), nude: steps.map((s) => ['nude', s]),
+  const ramps = { gold: ['100', '200', '300', '400', '500', '600', '700', '800'].map((s) => ['gold', s]), taupe: steps.map((s) => ['taupe', s]),
     status: ['green', 'amber', 'red', 'blue'].flatMap((c) => ['50', '600', '700'].map((s) => [c, s])) };
   for (const [key, list] of Object.entries(ramps)) {
     const box = document.querySelector(`[data-ramp="${key}"]`);
@@ -552,14 +559,16 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
   const pairs = [
     ['Texto principal', '--color-text-primary', '--color-background-body', 4.5],
     ['Texto principal no cartão', '--color-text-primary', '--color-background-surface', 4.5],
-    ['Texto principal na faixa rosé', '--color-text-primary', '--color-background-brand', 4.5],
+    ['Texto principal na faixa taupe', '--color-text-primary', '--color-background-brand', 4.5],
     ['Texto secundário', '--color-text-secondary', '--color-background-body', 4.5],
     ['Texto secundário no fundo suave', '--color-text-secondary', '--color-background-muted', 4.5],
     ['Destaque e preço', '--color-text-accent', '--color-background-surface', 4.5],
-    ['Destaque na faixa rosé', '--color-text-accent', '--color-background-brand', 4.5],
+    ['Destaque na faixa taupe', '--color-text-accent', '--color-background-brand', 4.5],
     ['Rodapé', '--color-text-inverted', '--color-background-inverted', 4.5],
     ['Botão primário', '--button-primary-text', '--button-primary-bg', 4.5],
     ['Botão primário, hover', '--button-primary-text', '--button-primary-bg-hover', 4.5],
+    ['Borda do botão primário', '--button-primary-border', '--color-background-body', 3, true],
+    ['Ênfase de título grande', '--color-text-display-accent', '--color-background-body', 3],
     ['Botão secundário', '--button-secondary-text', '--button-secondary-bg', 4.5],
     ['Link', '--link-text', '--color-background-body', 4.5],
     ['Placeholder do campo', '--input-placeholder', '--input-bg', 4.5],
@@ -572,7 +581,7 @@ footer .wrap { display: grid; gap: var(--spacing-3); }
     ['Borda do campo', '--input-border', '--input-bg', 3, true],
     ['Indicador da navegação', '--nav-indicator', '--nav-bg', 3, true],
     ['Anel de foco', '--focus-outline-color', '--color-background-body', 3, true],
-    ['Anel de foco na faixa rosé', '--focus-outline-color', '--color-background-brand', 3, true],
+    ['Anel de foco na faixa taupe', '--focus-outline-color', '--color-background-brand', 3, true],
   ];
   const box = document.getElementById('pairs');
   for (const [label, fg, bg, min, ui] of pairs) {

@@ -14,11 +14,13 @@ Contexto do produto em [PRODUCT.md](PRODUCT.md) e [docs/product/](docs/product/)
 
 ## 1. Direção
 
-**O padrão do setor, feito com capricho.** Rosé e nude, serifa de moda para títulos, sans geométrica para o resto, muito respiro, cantos suaves. A escolha foi consciente, numa rodada de direções em que a convenção ganhou de alternativas mais ousadas. A régua de acabamento é a de estúdios de beleza premium brasileiros.
+**O padrão do setor, feito com capricho, nas cores da marca.** Taupe e dourado da logo, serifa para títulos, sans geométrica para o resto, muito respiro, cantos suaves. A escolha foi consciente, numa rodada de direções em que a convenção ganhou de alternativas mais ousadas. A régua de acabamento é a de estúdios de beleza premium brasileiros. Em 27/11/2026 o rosé inicial deu lugar ao taupe e ao dourado da logo oficial, escolhidos numa comparação lado a lado (versão "dourada").
 
 Cena física: a cliente abre o link no celular, de dia, muitas vezes no transporte ou no trabalho, com uma mão só. Por isso o fundo é claro, o texto tem alto contraste, os alvos de toque são grandes e a ação principal fica ao alcance do polegar.
 
-Estratégia de cor: **contida**. Neutros nude quentes como base e um acento rosé, que faz trabalho real: ação principal, link, item ativo e foco. O rosé claro (`--color-background-brand`) aparece em faixas inteiras de seção, nunca salpicado.
+Estratégia de cor: **contida**. Neutros taupe como base e o dourado da logo como acento, que faz trabalho real: ação principal, horário marcado, item ativo e ênfase dos títulos. O taupe claro (`--color-background-brand`) aparece em faixas inteiras de seção, e o rodapé é marrom escuro com a logo dourada.
+
+O dourado da logo é claro (1,6:1 contra o branco), então ele tem três tons com papéis diferentes: **gold-300** como fundo de botão, sempre com texto escuro e borda **gold-500**; **gold-500** para indicadores de estado (rádio, caixa marcada, traço do menu) e para a ênfase de títulos de 24 px ou mais; **gold-700** para texto pequeno (links e preços).
 
 A interface não compete com o trabalho da Rachel: quando houver fotos reais, elas são a cor mais forte da página.
 
@@ -66,12 +68,22 @@ Regras de escrita: português do Brasil; data `qui, 28/11`; hora `14:00` (24 h);
 
 ### Nome
 
-- **Nome do estúdio: provisório.** Enquanto não sair o oficial, usar **"Estúdio Rachel"** com o rótulo "nome provisório" nos artefatos de marca. "Agenda da Rachel" é o nome do projeto e da área de agendamento.
-- O nome aparece só em um lugar no código: um arquivo de constantes de marca (Etapa 3), para que a troca seja de uma linha.
+- **Rachel Ferreira Nail Designer**, igual à logo. "Agenda da Rachel" é o nome do projeto e da área de agendamento.
+- No código, o nome fica num lugar só: `src/data/marca.ts` (`nome`, `nomeCompleto` e `profissional`, o primeiro nome usado nas frases).
 
-### Símbolo (provisório, desenhado na Etapa 2)
+### Logo
 
-Um **R** em Bodoni Moda dentro do contorno de uma **unha amendoada**, o formato clássico de alongamento, que é o carro-chefe. Linha fina, sem preenchimento. Arquivos em [design-system/brand/](design-system/brand/README.md), todos marcados como provisórios: `logo-principal.svg` (símbolo sobre o nome), `logo-horizontal.svg`, `logo-simbolo.svg` e `logo-mono.svg`. Texto convertido em contorno, sem script e sem referência externa. Tamanhos mínimos: símbolo com 32 px de altura, horizontal com 160 px de largura, principal com 140 px. Guia visual: [design-system/brand/demo.html](design-system/brand/demo.html).
+Monograma **RF** caligráfico sobre **RACHEL FERREIRA** em maiúsculas clássicas e **NAIL DESIGNER** espaçado. Ainda não há arquivo oficial: a versão do projeto foi **reconstruída** a partir da imagem do Instagram (150 px). O monograma foi vetorizado da imagem e o nome refeito na fonte Cinzel (SIL OFL), tudo convertido em contorno, sem script e sem referência externa. Trocar pelo arquivo oficial (SVG ou PDF) quando chegar, mantendo os nomes de arquivo.
+
+| Arquivo | Uso |
+|---|---|
+| `logo-principal.svg` | Empilhada, taupe escuro, para fundo claro |
+| `logo-principal-ouro.svg` | Empilhada, dourado, para fundo taupe ou escuro |
+| `logo-horizontal.svg` / `-ouro.svg` | Cabeçalho a partir de 640 px (48 px de altura) |
+| `logo-simbolo.svg` | Só o monograma: cabeçalho no celular, favicon, espaço de foto |
+| `logo-mono.svg` | Uma cor só |
+
+Na logo original, o dourado sobre o taupe tem contraste de 2,1:1. Logotipos são isentos de contraste pela WCAG, mas texto do site não: por isso as cores da logo entram no site com os ajustes da seção de cores. Guia visual: [design-system/brand/demo.html](design-system/brand/demo.html).
 
 ### Cores em três níveis
 
@@ -79,8 +91,8 @@ Um **R** em Bodoni Moda dentro do contorno de uma **unha amendoada**, o formato 
 
 | Família | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `rose` (rosé) | `#FBF4F2` | `#F5E6E2` | `#EBCDC6` | `#DCAEA5` | `#C98B87` | `#B06C6B` | `#935356` | `#784147` | `#5C3237` | `#3E2226` |
-| `nude` (neutro quente) | `#FAF7F5` | `#F3EDE9` | `#E6DCD5` | `#D2C3B9` | `#B09D91` | `#8C796E` | `#6B5A51` | `#52443D` | `#3A2E29` | `#241B18` |
+| `taupe` (fundo da logo em 500) | `#F5F2F0` | `#EEE9E5` | `#E6E0DB` | `#CBBEB4` | `#A79381` | `#98806B` | `#857260` | `#6B5B4D` | `#3B322B` | `#241B18` |
+| `gold` (letras da logo em 300; sem 50 e 900) | | `#F7EEDB` | `#EED9AE` | `#E0C080` | `#D2A347` | `#AC812A` | `#876521` | `#6B501A` | `#4F3B13` | |
 
 Status: `green` 50/600/700, `amber` 50/600/700, `red` 50/600/700, `blue` 50/600/700. Também `white`.
 
@@ -88,21 +100,22 @@ Status: `green` 50/600/700, `amber` 50/600/700, `red` 50/600/700, `blue` 50/600/
 
 | Token | Primitiva | Uso |
 |---|---|---|
-| `--color-background-body` | nude-50 | Fundo da página |
+| `--color-background-body` | taupe-50 | Fundo da página |
 | `--color-background-surface` / `-card` / `-popover` | white | Cartões, campos, menus |
-| `--color-background-muted` | nude-100 | Faixas neutras, células desativadas |
-| `--color-background-brand` | rose-100 | Faixas de seção de marca |
-| `--color-background-inverted` | nude-900 | Rodapé |
-| `--color-text-primary` | nude-900 | Texto principal |
-| `--color-text-secondary` | nude-600 | Texto de apoio, metadados |
-| `--color-text-accent` | rose-700 | Texto de destaque, preço em evidência |
-| `--color-text-disabled` | nude-400 | Somente texto desativado (isento de contraste pela WCAG) |
-| `--color-accent` / `--color-on-accent` | rose-600 / white | Ação principal |
-| `--color-border` | nude-200 | Divisórias e borda de cartão (decorativa) |
-| `--color-border-emphasized` | nude-500 | Borda de campo e de controle (3:1) |
+| `--color-background-muted` | taupe-100 | Faixas neutras, células desativadas |
+| `--color-background-brand` | taupe-200 | Faixas de seção de marca |
+| `--color-background-inverted` | taupe-800 | Rodapé |
+| `--color-text-primary` | taupe-900 | Texto principal |
+| `--color-text-secondary` | taupe-700 | Texto de apoio, metadados |
+| `--color-text-accent` | gold-700 | Texto de destaque pequeno: links e preços |
+| `--color-text-display-accent` | gold-500 | Só ênfase em títulos de 24 px ou mais (3:1, permitido pela WCAG em texto grande) |
+| `--color-text-disabled` | taupe-400 | Somente texto desativado (isento de contraste pela WCAG) |
+| `--color-accent` / `--color-on-accent` | gold-500 / taupe-900 | Indicadores de estado (rádio, caixa, calendário); o botão principal usa `--button-primary-*` |
+| `--color-border` | taupe-200 | Divisórias e borda de cartão (decorativa) |
+| `--color-border-emphasized` | taupe-600 | Borda de campo e de controle (3:1) |
 | `--color-{success,warning,error,info}` | *-600 | Preenchimento de status |
 | `--color-{status}-muted` + `--color-on-{status}-muted` | *-50 + *-700 | Alertas suaves |
-| `--color-overlay` | nude-900 a 50% | Fundo de diálogo |
+| `--color-overlay` | taupe-900 a 50% | Fundo de diálogo |
 
 **De componente**: `--button-*`, `--input-*`, `--link-*`, `--card-*`, `--nav-*`, `--alert-*`, `--sample-label-*`. Ver a seção 4.
 
@@ -115,39 +128,46 @@ Todos os pares abaixo saem de `node design-system/scripts/check-contrast.mjs --m
 <!-- CONTRASTE:INICIO -->
 | Par | Cores | Razão | Mínimo | Resultado |
 |---|---|---|---|---|
-| Texto principal / fundo da página | `#241B18` / `#FAF7F5` | 15.81:1 | 4.5:1 | passa |
+| Texto principal / fundo da página | `#241B18` / `#F5F2F0` | 15.13:1 | 4.5:1 | passa |
 | Texto principal / superfície | `#241B18` / `#FFFFFF` | 16.87:1 | 4.5:1 | passa |
-| Texto principal / fundo suave | `#241B18` / `#F3EDE9` | 14.54:1 | 4.5:1 | passa |
-| Texto principal / fundo da marca | `#241B18` / `#F5E6E2` | 13.90:1 | 4.5:1 | passa |
-| Texto secundário / fundo da página | `#6B5A51` / `#FAF7F5` | 6.14:1 | 4.5:1 | passa |
-| Texto secundário / superfície | `#6B5A51` / `#FFFFFF` | 6.55:1 | 4.5:1 | passa |
-| Texto secundário / fundo suave | `#6B5A51` / `#F3EDE9` | 5.65:1 | 4.5:1 | passa |
-| Texto de destaque / fundo da página | `#784147` / `#FAF7F5` | 7.44:1 | 4.5:1 | passa |
-| Texto de destaque / superfície | `#784147` / `#FFFFFF` | 7.94:1 | 4.5:1 | passa |
-| Texto de destaque / fundo da marca | `#784147` / `#F5E6E2` | 6.54:1 | 4.5:1 | passa |
-| Texto invertido / fundo invertido | `#FAF7F5` / `#241B18` | 15.81:1 | 4.5:1 | passa |
-| Botão primário: texto / fundo | `#FFFFFF` / `#935356` | 5.81:1 | 4.5:1 | passa |
-| Botão primário: texto / hover | `#FFFFFF` / `#784147` | 7.94:1 | 4.5:1 | passa |
-| Botão primário: texto / pressionado | `#FFFFFF` / `#5C3237` | 10.68:1 | 4.5:1 | passa |
-| Botão secundário: texto / fundo | `#784147` / `#FFFFFF` | 7.94:1 | 4.5:1 | passa |
-| Botão secundário: texto / hover | `#784147` / `#FBF4F2` | 7.30:1 | 4.5:1 | passa |
-| Botão secundário: borda / página | `#935356` / `#FAF7F5` | 5.45:1 | 3:1 | passa |
-| Botão primário: fundo / página | `#935356` / `#FAF7F5` | 5.45:1 | 3:1 | passa |
+| Texto principal / fundo suave | `#241B18` / `#EEE9E5` | 13.99:1 | 4.5:1 | passa |
+| Texto principal / fundo da marca | `#241B18` / `#E6E0DB` | 12.89:1 | 4.5:1 | passa |
+| Texto secundário / fundo da página | `#6B5B4D` / `#F5F2F0` | 5.84:1 | 4.5:1 | passa |
+| Texto secundário / superfície | `#6B5B4D` / `#FFFFFF` | 6.50:1 | 4.5:1 | passa |
+| Texto secundário / fundo suave | `#6B5B4D` / `#EEE9E5` | 5.40:1 | 4.5:1 | passa |
+| Texto de destaque / fundo da página | `#6B501A` / `#F5F2F0` | 6.76:1 | 4.5:1 | passa |
+| Texto de destaque / superfície | `#6B501A` / `#FFFFFF` | 7.53:1 | 4.5:1 | passa |
+| Texto de destaque / fundo da marca | `#6B501A` / `#E6E0DB` | 5.76:1 | 4.5:1 | passa |
+| Texto invertido / fundo invertido | `#F5F2F0` / `#3B322B` | 11.23:1 | 4.5:1 | passa |
+| Texto sobre escuro / fundo invertido | `#F5F2F0` / `#3B322B` | 11.23:1 | 4.5:1 | passa |
+| Botão primário: texto / fundo | `#241B18` / `#E0C080` | 9.66:1 | 4.5:1 | passa |
+| Botão primário: texto / hover | `#241B18` / `#D2A347` | 7.29:1 | 4.5:1 | passa |
+| Botão primário: texto / pressionado | `#241B18` / `#AC812A` | 4.76:1 | 4.5:1 | passa |
+| Botão secundário: texto / fundo | `#6B5B4D` / `#FFFFFF` | 6.50:1 | 4.5:1 | passa |
+| Botão secundário: texto / hover | `#6B5B4D` / `#F5F2F0` | 5.84:1 | 4.5:1 | passa |
+| Botão secundário: borda / página | `#6B5B4D` / `#F5F2F0` | 5.84:1 | 3:1 | passa |
+| Botão primário: borda / página | `#AC812A` / `#F5F2F0` | 3.18:1 | 3:1 | passa |
+| Botão primário: borda / superfície | `#AC812A` / `#FFFFFF` | 3.54:1 | 3:1 | passa |
+| Indicador marcado (rádio, caixa, dia) / superfície | `#AC812A` / `#FFFFFF` | 3.54:1 | 3:1 | passa |
+| Indicador marcado (rádio, caixa, dia) / página | `#AC812A` / `#F5F2F0` | 3.18:1 | 3:1 | passa |
+| Texto sobre indicador marcado | `#241B18` / `#AC812A` | 4.76:1 | 4.5:1 | passa |
+| Horário marcado: borda / superfície | `#876521` / `#FFFFFF` | 5.37:1 | 3:1 | passa |
+| Ênfase de título grande / página | `#AC812A` / `#F5F2F0` | 3.18:1 | 3:1 | passa |
 | Campo: texto / fundo | `#241B18` / `#FFFFFF` | 16.87:1 | 4.5:1 | passa |
-| Campo: placeholder / fundo | `#6B5A51` / `#FFFFFF` | 6.55:1 | 4.5:1 | passa |
-| Campo: rótulo / página | `#3A2E29` / `#FAF7F5` | 12.28:1 | 4.5:1 | passa |
-| Campo: dica / página | `#6B5A51` / `#FAF7F5` | 6.14:1 | 4.5:1 | passa |
-| Campo: erro / página | `#8A1F18` / `#FAF7F5` | 8.60:1 | 4.5:1 | passa |
-| Campo: borda / fundo do campo | `#8C796E` / `#FFFFFF` | 4.14:1 | 3:1 | passa |
-| Campo: borda / página | `#8C796E` / `#FAF7F5` | 3.88:1 | 3:1 | passa |
-| Campo: borda de foco / fundo | `#784147` / `#FFFFFF` | 7.94:1 | 3:1 | passa |
+| Campo: placeholder / fundo | `#6B5B4D` / `#FFFFFF` | 6.50:1 | 4.5:1 | passa |
+| Campo: rótulo / página | `#3B322B` / `#F5F2F0` | 11.23:1 | 4.5:1 | passa |
+| Campo: dica / página | `#6B5B4D` / `#F5F2F0` | 5.84:1 | 4.5:1 | passa |
+| Campo: erro / página | `#8A1F18` / `#F5F2F0` | 8.23:1 | 4.5:1 | passa |
+| Campo: borda / fundo do campo | `#857260` / `#FFFFFF` | 4.59:1 | 3:1 | passa |
+| Campo: borda / página | `#857260` / `#F5F2F0` | 4.12:1 | 3:1 | passa |
+| Campo: borda de foco / fundo | `#3B322B` / `#FFFFFF` | 12.52:1 | 3:1 | passa |
 | Campo: borda de erro / fundo | `#B0281F` / `#FFFFFF` | 6.63:1 | 3:1 | passa |
-| Link / página | `#784147` / `#FAF7F5` | 7.44:1 | 4.5:1 | passa |
-| Link / superfície | `#784147` / `#FFFFFF` | 7.94:1 | 4.5:1 | passa |
-| Link hover / página | `#5C3237` / `#FAF7F5` | 10.01:1 | 4.5:1 | passa |
-| Navegação: texto / fundo | `#3A2E29` / `#FAF7F5` | 12.28:1 | 4.5:1 | passa |
-| Navegação: ativo / fundo | `#784147` / `#FAF7F5` | 7.44:1 | 4.5:1 | passa |
-| Navegação: indicador / fundo | `#935356` / `#FAF7F5` | 5.45:1 | 3:1 | passa |
+| Link / página | `#6B501A` / `#F5F2F0` | 6.76:1 | 4.5:1 | passa |
+| Link / superfície | `#6B501A` / `#FFFFFF` | 7.53:1 | 4.5:1 | passa |
+| Link hover / página | `#4F3B13` / `#F5F2F0` | 9.58:1 | 4.5:1 | passa |
+| Navegação: texto / fundo | `#3B322B` / `#F5F2F0` | 11.23:1 | 4.5:1 | passa |
+| Navegação: ativo / fundo | `#241B18` / `#F5F2F0` | 15.13:1 | 4.5:1 | passa |
+| Navegação: indicador / fundo | `#AC812A` / `#F5F2F0` | 3.18:1 | 3:1 | passa |
 | Alerta sucesso: texto / fundo | `#235236` / `#EDF5EF` | 8.11:1 | 4.5:1 | passa |
 | Alerta aviso: texto / fundo | `#6B4600` / `#FCF4E3` | 7.67:1 | 4.5:1 | passa |
 | Alerta erro: texto / fundo | `#8A1F18` / `#FBECEB` | 7.99:1 | 4.5:1 | passa |
@@ -161,39 +181,39 @@ Todos os pares abaixo saem de `node design-system/scripts/check-contrast.mjs --m
 | Status cheio: texto / erro | `#FFFFFF` / `#B0281F` | 6.63:1 | 4.5:1 | passa |
 | Status cheio: texto / info | `#FFFFFF` / `#2B5A8E` | 7.10:1 | 4.5:1 | passa |
 | Rótulo "exemplo": texto / fundo | `#6B4600` / `#FCF4E3` | 7.67:1 | 4.5:1 | passa |
-| Foco / página | `#5C3237` / `#FAF7F5` | 10.01:1 | 3:1 | passa |
-| Foco / superfície | `#5C3237` / `#FFFFFF` | 10.68:1 | 3:1 | passa |
-| Foco / fundo da marca | `#5C3237` / `#F5E6E2` | 8.80:1 | 3:1 | passa |
+| Foco / página | `#3B322B` / `#F5F2F0` | 11.23:1 | 3:1 | passa |
+| Foco / superfície | `#3B322B` / `#FFFFFF` | 12.52:1 | 3:1 | passa |
+| Foco / fundo da marca | `#3B322B` / `#E6E0DB` | 9.57:1 | 3:1 | passa |
 <!-- CONTRASTE:FIM -->
 
-Proibido: rosé 400 ou mais claro como cor de texto; texto branco sobre rose-500 ou mais claro (rose-500 com branco dá 3,9:1 e falha). Texto sobre foto sempre com véu `--color-overlay` ou sobre um cartão sólido.
+Proibido: gold-300 ou gold-400 como cor de texto ou como único contorno de um controle (1,6 e 2,1:1 contra o fundo claro); texto branco sobre qualquer dourado (o dourado da logo com branco dá 1,7:1). Texto sobre foto sempre com véu `--color-overlay` ou sobre um cartão sólido.
 
 ### Tipografia
 
 | Papel | Família | Por quê |
 |---|---|---|
-| Títulos e display (`--font-family-heading`) | **Bodoni Moda** (variável, eixos `opsz` 6–96 e `wght` 400–900, itálico) | A didone de revista de moda é a voz do padrão de beleza; o eixo de tamanho óptico mantém as hastes finas legíveis nos títulos pequenos, o que uma Didot comum não faz. |
+| Títulos e display (`--font-family-heading`) | **Young Serif** (peso único 400, sem itálico) | Serifa robusta e acolhedora, com traços grossos que se leem bem no celular e em tamanho pequeno. Trocou o Bodoni Moda em 27/11/2026: os traços finos dele sumiam nos títulos de 18 a 25 px (feedback do dono do projeto). |
 | Texto, interface, números (`--font-family-body`) | **Jost** (variável, `wght` 100–900, itálico) | Geométrica no espírito da Futura, comum em marcas de beleza, mas com aberturas largas o bastante para ler preço e horário no celular. |
 
 Ambas têm licença SIL Open Font License 1.1 e acentuação completa do português.
 
-**Fontes auto-hospedadas.** Arquivos `.woff2` em `public/fonts/` (Bodoni Moda normal e itálico e Jost normal, 126 KB no total), com subconjunto latin, que já cobre toda a acentuação do português, `font-display: swap`, servidos do mesmo domínio. Nenhuma requisição a Google Fonts ou a qualquer CDN em tempo de execução. Pré-carregar só dois arquivos: Jost regular e Bodoni Moda regular. Fallbacks com métricas próximas (Georgia, Segoe UI e system-ui) para reduzir o salto de layout.
+**Fontes auto-hospedadas.** Arquivos `.woff2` em `public/fonts/` (Young Serif e Jost, 53 KB no total), com subconjunto latin, que já cobre toda a acentuação do português, `font-display: swap`, servidos do mesmo domínio. Nenhuma requisição a Google Fonts ou a qualquer CDN em tempo de execução. Pré-carregar só dois arquivos: Jost e Young Serif. Fallbacks com métricas próximas (Georgia, Segoe UI e system-ui) para reduzir o salto de layout.
 
 **Escala** (terça maior, razão 1,25, base 16 px):
 
 | Token | Tamanho | Família | Peso | Entrelinha | Uso |
 |---|---|---|---|---|---|
-| `--text-display-1-*` | clamp 39–61 px | Bodoni Moda | 400 | 1,15 | Título da página inicial |
-| `--text-heading-1-*` | 31 px | Bodoni Moda | 500 | 1,15 | Título de página |
-| `--text-heading-2-*` | 25 px | Bodoni Moda | 500 | 1,3 | Seção |
-| `--text-heading-3-*` | 20 px | Bodoni Moda | 500 | 1,3 | Subseção, nome do serviço |
-| `--text-heading-4-*` | 18 px | Bodoni Moda | 600 | 1,3 | Título de cartão |
+| `--text-display-1-*` | clamp 39–49 px | Young Serif | 400 | 1,15 | Título da página inicial |
+| `--text-heading-1-*` | 31 px | Young Serif | 400 | 1,15 | Título de página |
+| `--text-heading-2-*` | 25 px | Young Serif | 400 | 1,3 | Seção |
+| `--text-heading-3-*` | 20 px | Young Serif | 400 | 1,3 | Subseção, nome do serviço |
+| `--text-heading-4-*` | 18 px | Young Serif | 400 | 1,3 | Título de cartão |
 | `--text-large-*` | 18 px | Jost | 400 | 1,55 | Texto de abertura |
 | `--text-body-*` | 16 px | Jost | 400 | 1,55 | Texto corrido, campos |
 | `--text-label-*` | 14 px | Jost | 500 | 1,3 | Rótulos, botões pequenos |
 | `--text-supporting-*` | 14 px | Jost | 400 | 1,55 | Dicas, metadados |
 
-Regras: o texto nunca fica abaixo de 14 px, e os campos sempre usam 16 px (o iOS não dá zoom). Preço, duração e horário usam algarismos tabulares (`font-variant-numeric: tabular-nums`). Linha de leitura com no máximo `--layout-reading-width` (40rem, uns 70 caracteres). Itálico do Bodoni só para uma palavra de ênfase por título, nunca em parágrafo.
+Regras: o texto nunca fica abaixo de 14 px, e os campos sempre usam 16 px (o iOS não dá zoom). Preço, duração e horário usam algarismos tabulares (`font-variant-numeric: tabular-nums`). Linha de leitura com no máximo `--layout-reading-width` (40rem, uns 70 caracteres). A Young Serif não tem itálico nem negrito: a palavra de ênfase de um título muda só de cor (`--color-text-accent`), nunca de estilo, e nenhum título usa peso diferente de 400, senão o navegador fabrica um negrito torto.
 
 ### Espaçamento
 
@@ -214,7 +234,7 @@ Ritmo: mais espaço acima de um título do que abaixo dele. Componentes do Astry
 
 ### Sombras
 
-Tingidas com o nude-800, nunca preto puro: `--shadow-low` (cartão em repouso), `--shadow-med` (cartão em hover, menu), `--shadow-high` (diálogo, folha inferior). Sombra serve para elevação, não para decorar.
+Tingidas com o taupe-800, nunca preto puro: `--shadow-low` (cartão em repouso), `--shadow-med` (cartão em hover, menu), `--shadow-high` (diálogo, folha inferior). Sombra serve para elevação, não para decorar.
 
 ### Movimento
 
@@ -248,17 +268,18 @@ Todos vêm do `@astryxdesign/core`. Antes de usar qualquer prop, consultar `npx 
 
 | Propriedade | Repouso | Hover | Pressionado | Foco | Desativado | Carregando |
 |---|---|---|---|---|---|---|
-| Primário: fundo | rose-600 | rose-700 | rose-800 | rose-600 + anel | nude-100 | rose-600 |
-| Primário: texto | white | white | white | white | nude-500 | white + indicador |
-| Secundário: fundo | white | rose-50 | rose-100 | white + anel | nude-100 | white |
-| Secundário: borda / texto | rose-600 / rose-700 | idem | idem | idem | nude-200 / nude-500 | idem |
+| Primário: fundo | gold-300 | gold-400 | gold-500 | gold-300 + anel | taupe-100 | gold-300 |
+| Primário: texto / borda | taupe-900 / gold-500 | idem | idem | idem | taupe-600 / taupe-200 | taupe-900 + indicador |
+| Secundário: fundo | white | taupe-50 | taupe-200 | white + anel | taupe-100 | white |
+| Secundário: borda / texto | taupe-700 / taupe-700 | idem | idem | idem | taupe-200 / taupe-600 | idem |
+| Horário ou dia marcado | gold-300 + borda de 2 px gold-600 + negrito | | | | | |
 
 Altura de 48 px (mínimo de 44 px), pílula, peso 500, rótulo com verbo ("Agendar horário", "Confirmar"). Um único primário por tela. No celular, o primário do fluxo de agendamento ocupa a largura toda e fica fixo acima da área segura inferior. Desativado é raro: prefira manter o botão ativo e explicar o que falta. Carregando mantém o rótulo, ganha `aria-busy` e não muda de largura.
 
 ### Campo de formulário
 
 - Rótulo visível sempre acima do campo (`--input-label`, 14 px, peso 500). Placeholder nunca substitui rótulo.
-- Altura de 48 px, raio de 12 px, borda nude-500 (3,9:1), hover nude-700, foco com borda rose-700 + anel de foco.
+- Altura de 48 px, raio de 12 px, borda taupe-600 (4,6:1), hover taupe-700, foco com borda taupe-800 + anel de foco.
 - Dica abaixo do rótulo (`--input-hint`) e ligada por `aria-describedby`.
 - Erro: borda red-600, mensagem red-700 abaixo do campo com ícone, `aria-invalid="true"` e foco no primeiro campo com erro ao enviar. A mensagem diz como corrigir.
 - `autocomplete` correto (`name`, `email`, `tel`, `new-password`), `inputmode` para celular, nada de validação que bloqueie colar.
@@ -266,19 +287,19 @@ Altura de 48 px (mínimo de 44 px), pílula, peso 500, rótulo com verbo ("Agend
 
 ### Link
 
-Rose-700, sempre sublinhado (1 px, deslocado 0,2em); hover rose-800 com sublinhado de 2 px. Link externo (WhatsApp, Instagram, mapa) diz para onde vai no texto e abre na mesma aba, salvo o WhatsApp no desktop. Nunca "clique aqui".
+Gold-700, sempre sublinhado (1 px, deslocado 0,2em); hover gold-800 com sublinhado de 2 px. Link externo (WhatsApp, Instagram, mapa) diz para onde vai no texto e abre na mesma aba, salvo o WhatsApp no desktop. Nunca "clique aqui".
 
 ### Cartão
 
-Fundo branco, borda nude-200, raio de 20 px, padding de 24 px, `--shadow-low`. Cartão clicável: o cartão inteiro é o alvo, com um único link ou botão dentro, hover `--shadow-med` e foco com anel no cartão. Cartão de serviço: nome (heading-3), descrição em até duas linhas, e uma linha fixa com **duração · valor** em algarismos tabulares, sempre na mesma posição.
+Fundo branco, borda taupe-200, raio de 20 px, padding de 24 px, `--shadow-low`. Cartão clicável: o cartão inteiro é o alvo, com um único link ou botão dentro, hover `--shadow-med` e foco com anel no cartão. Cartão de serviço: nome (heading-3), descrição em até duas linhas, e uma linha fixa com **duração · valor** em algarismos tabulares, sempre na mesma posição.
 
 ### Navegação
 
-- Barra superior de 64 px, fundo nude-50, borda inferior nude-200, nome ou logo à esquerda e "Agendar" como botão primário à direita.
+- Barra superior de 64 px, fundo taupe-50, borda inferior taupe-200, logo horizontal à esquerda (só o monograma abaixo de 640 px) e "Agendar" como botão primário à direita.
 - Celular: menu com botão rotulado "Menu" (texto, não só ícone), `aria-expanded`, foco preso enquanto aberto e Esc para fechar.
-- Item ativo: texto rose-700 + indicador de 2 px rose-600 + `aria-current="page"`.
+- Item ativo: texto taupe-900 + traço de 2 px gold-500 + `aria-current="page"`.
 - Link "Pular para o conteúdo" como primeiro foco da página.
-- Rodapé (fundo nude-900) com privacidade, termos e contato, acessíveis de qualquer tela (RF-04).
+- Rodapé (fundo taupe-800, logo dourada) com privacidade, termos e contato, acessíveis de qualquer tela (RF-04).
 
 ### Alerta
 
@@ -286,7 +307,7 @@ Fundo `*-50`, borda inteira de 1 px em `*-600` (nunca faixa num lado só), texto
 
 ### Foco visível
 
-Um anel só para tudo: `outline: var(--focus-outline-width) var(--focus-outline-style) var(--focus-outline-color); outline-offset: var(--focus-outline-offset);`, com 2 px rose-800 e afastamento de 3 px. Contraste de 8,8:1 a 10,7:1 nos fundos. Aparece só com `:focus-visible`, nunca é removido sem substituto, e nenhum elemento fixo (barra, botão flutuante, banner) pode cobri-lo (WCAG 2.4.11, com `scroll-padding` igual à altura da barra fixa).
+Um anel só para tudo: `outline: var(--focus-outline-width) var(--focus-outline-style) var(--focus-outline-color); outline-offset: var(--focus-outline-offset);`, com 2 px taupe-800 e afastamento de 3 px. Contraste de 9,6:1 a 12,5:1 nos fundos. Aparece só com `:focus-visible`, nunca é removido sem substituto, e nenhum elemento fixo (barra, botão flutuante, banner) pode cobri-lo (WCAG 2.4.11, com `scroll-padding` igual à altura da barra fixa).
 
 ### Rótulo de dado fictício
 
@@ -344,7 +365,7 @@ Fora da stack, de propósito: commitlint e husky (a convenção de commit está 
 
 ### Desempenho
 
-Metas para as páginas públicas, num celular intermediário em 4G: LCP abaixo de 2,5 s, INP abaixo de 200 ms, CLS abaixo de 0,1; fontes abaixo de 150 KB no total (126 KB hoje). **JS inicial: a meta de 150 KB gzip não é atingível com o Astryx.** Medido na Etapa 3, a página de serviços (só lista) tem 340 KB, a inicial 357 KB e o agendamento 397 KB; React mais Next somam uns 150 KB, e o resto é a base do Astryx (camadas, popover, interação de toque). Nova meta: não passar de 400 KB e acompanhar a cada PR. Para reduzir, levar o caso ao Astryx (`npx astryx gap-report`), em vez de trocar de biblioteca. Imagens em AVIF ou WebP com `srcset`/`sizes`, dimensões declaradas, e `loading="lazy"` fora da primeira tela. Páginas públicas geradas como estáticas.
+Metas para as páginas públicas, num celular intermediário em 4G: LCP abaixo de 2,5 s, INP abaixo de 200 ms, CLS abaixo de 0,1; fontes abaixo de 150 KB no total (53 KB hoje). **JS inicial: a meta de 150 KB gzip não é atingível com o Astryx.** Medido na Etapa 3, a página de serviços (só lista) tem 340 KB, a inicial 357 KB e o agendamento 397 KB; React mais Next somam uns 150 KB, e o resto é a base do Astryx (camadas, popover, interação de toque). Nova meta: não passar de 400 KB e acompanhar a cada PR. Para reduzir, levar o caso ao Astryx (`npx astryx gap-report`), em vez de trocar de biblioteca. Imagens em AVIF ou WebP com `srcset`/`sizes`, dimensões declaradas, e `loading="lazy"` fora da primeira tela. Páginas públicas geradas como estáticas.
 
 ### SEO
 
@@ -402,9 +423,9 @@ Celular (390 px) e desktop (1280 px), antes e depois quando for mudança visual.
 
 ## 9. Pendências desta versão
 
-- Nome oficial do estúdio e logo (a da Etapa 2 é provisória).
+- Arquivo oficial da logo (a atual foi reconstruída da imagem do Instagram).
 - Fotos reais do portfólio e retrato da Rachel: até lá, espaços rotulados "Foto de exemplo".
-- Número de WhatsApp, Instagram, e-mail e endereço reais (hoje fictícios e rotulados).
+- E-mail real (hoje fictício e rotulado). Endereço, telefone e Instagram já são os reais.
 - Canal de avisos (e-mail ou WhatsApp): o site não promete lembrete enquanto isso não for decidido.
 - Política de privacidade e termos: rascunhos, precisam de revisão profissional antes de dados reais.
 - CSP com nonce (hoje `'unsafe-inline'` em script, aceitável sem backend).
@@ -417,8 +438,8 @@ Celular (390 px) e desktop (1280 px), antes e depois quando for mudança visual.
 ### Tema e tokens no código
 
 - `src/theme/rachel.ts` estende o tema neutral do Astryx e lê a camada semântica e a de componente do `tokens.json`, sem copiar valores. `npm run theme` compila para `src/theme/built/`; o CI roda `npm run check:theme` e falha se o compilado estiver velho.
-- O neutral troca a tipografia em telas de toque abaixo de 1024 px (fonte Figtree, outra escala). O tema reaplica a nossa nessa mesma condição. Sem isso, o celular perderia Jost e Bodoni.
-- Regras de componente no tema, nunca na página: botão em pílula, botão secundário branco com borda rosé, item ativo do menu com texto rosé e traço inferior, e o selo "Exemplo" (Badge `warning`) em âmbar claro.
+- O neutral troca a tipografia em telas de toque abaixo de 1024 px (fonte Figtree, outra escala). O tema reaplica a nossa nessa mesma condição. Sem isso, o celular perderia Jost e Young Serif.
+- Regras de componente no tema, nunca na página: botão em pílula, botão principal dourado com borda, botão secundário branco com borda taupe, horário e dia marcados em dourado com borda escura, item ativo do menu com traço dourado, e o selo "Exemplo" (Badge `warning`) em âmbar claro.
 - `tokens.css` continua sendo gerado para o `design-system/brand/demo.html`. O site não o importa: as variáveis chegam pelo tema, como pede o Astryx.
 - Textos internos do Astryx (obrigatório, opcional, etapas, calendário) em pt-BR, via `InternationalizationProvider`. Tema fixo no modo claro.
 
@@ -431,7 +452,7 @@ Celular (390 px) e desktop (1280 px), antes e depois quando for mudança visual.
 | Portfólio | Grade 4:5 de espaços "Foto de exemplo" com o símbolo da marca | Aviso "Fotos em tratamento" no topo. Sem filtros até existirem fotos. |
 | Agendar | Assistente em 4 etapas (Serviço, Dia e horário, Seus dados, Revisão), com resumo lateral no desktop | Detalhado abaixo. |
 | Sobre | Apresentação e perguntas frequentes | Todo o texto é exemplo e está rotulado; nenhuma afirmação de experiência ou curso. |
-| Contato | Endereço completo, canais e horários de atendimento | Horários derivados do mesmo expediente usado na agenda. WhatsApp "a definir"; nada de link para número ou perfil que pode ser de outra pessoa. |
+| Contato | Endereço completo, canais e horários de atendimento | Horários derivados do mesmo expediente usado na agenda. WhatsApp e telefone reais, com link (`wa.me` e `tel:`); Instagram (@rachelferreira.nails, informado pela Rachel) é link externo; só o e-mail segue como exemplo. |
 | Privacidade e Termos | Texto em largura de leitura, aviso "Rascunho" | Elementos do art. 9º da LGPD. |
 
 ### Agendamento
@@ -441,11 +462,14 @@ Celular (390 px) e desktop (1280 px), antes e depois quando for mudança visual.
 - Base legal do agendamento: execução de contrato (LGPD, art. 7º, V). Por isso a caixa obrigatória diz "Li e aceito os termos de uso e estou ciente da política de privacidade", e não "aceito a política". Promoções: consentimento separado, opcional e desmarcado.
 - "Continuar" nunca fica desativado: sem escolha, aparece uma mensagem dizendo o que falta. Ao trocar de etapa, o foco vai para o título da etapa.
 - Calendário sem dias de outros meses: eles pareciam indisponíveis.
+- Horários do dia e o seletor de serviço da página inicial são botões soltos (`ToggleButton`) dentro de um grupo rotulado, e não um grupo de rádio horizontal: o grupo de rádio não quebra de linha e espremia os horários ("09:0 / 0"). Pílula com borda taupe; o marcado fica dourado com borda escura de 2 px e negrito (regra no tema, em `toggle-button` e `calendar-day`).
+- O calendário do Astryx precisa de 7 × 44 px (308 px), e em 320 px só há 256 px dentro do cartão. O tema encolhe o tamanho do dia só dentro do calendário e só quando falta espaço (`min(44px, (100vw − 68px) / 7)`); acima de uns 375 px ele continua com 44 px. O cartão do assistente usa padding de 16 px no celular e 24 px a partir de 768 px.
+- O `body` tem `overflow-x: clip`, que **esconde** o excesso em vez de mostrá-lo. Por isso o teste de rolagem horizontal sozinho não basta: o e2e também mede a borda direita de cada elemento da página (320 e 390 px) e há testes só do passo de horários e do seletor de serviço da página inicial em 320 px.
 - Cupom de exemplo `BEMVINDA10` (10%) para mostrar o valor final antes de confirmar.
 
 ### Verificação
 
 - `npm test`: 19 testes de agenda, cupom, validação e parâmetros.
 - `npm run test:e2e`: as 8 páginas no celular e no desktop, com axe (WCAG 2.0, 2.1 e 2.2 A/AA) sem violações, sem rolagem horizontal em 320 e 390 px e sem requisição a terceiros; e o fluxo completo de agendamento.
-- `npm run check:contrast`: 50 pares, todos AA.
+- `npm run check:contrast`: 56 pares, todos AA.
 

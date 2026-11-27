@@ -17,9 +17,15 @@ const csp = [
   "object-src 'none'",
 ].join('; ');
 
+// Na Vercel o site sai como export estático (todas as páginas já são estáticas): o build com funções de servidor
+// falha no Next 16.4 + Vercel (_global-error). Lá os cabeçalhos vêm do vercel.json, porque o export ignora headers().
+const exportEstatico = !!process.env.VERCEL;
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  ...(exportEstatico ? {output: 'export' as const} : {}),
   async headers() {
+    if (exportEstatico) return [];
     return [
       {
         source: '/:path*',

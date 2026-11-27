@@ -15,6 +15,7 @@ import {RadioList, RadioListItem} from '@astryxdesign/core/RadioList';
 import {Skeleton} from '@astryxdesign/core/Skeleton';
 import {Step, Stepper} from '@astryxdesign/core/Stepper';
 import {Heading, Text} from '@astryxdesign/core/Text';
+import {ToggleButton} from '@astryxdesign/core/ToggleButton';
 import {TextInput} from '@astryxdesign/core/TextInput';
 import {Exemplo} from '@/components/ui/Exemplo';
 import {PrecoDuracao} from '@/components/ui/PrecoDuracao';
@@ -163,8 +164,8 @@ function Fluxo({agora, inicial}: {agora: Agora; inicial: Inicial}) {
       </Stepper>
 
       <VStack gap={8} className="lg:grid lg:grid-cols-3 lg:items-start">
-        <Card padding={6} elevation="low" className="lg:col-span-2">
-          <VStack gap={6}>
+        <Card padding={0} elevation="low" className="lg:col-span-2">
+          <VStack gap={6} className="p-4 md:p-6">
             <Heading level={2} ref={tituloRef} tabIndex={-1}>
               {
                 ['Qual serviço você quer?', 'Escolha o dia e o horário', 'Seus dados', 'Confira e confirme'][
@@ -221,16 +222,27 @@ function Fluxo({agora, inicial}: {agora: Agora; inicial: Inicial}) {
                 <VStack gap={2}>
                   {!data && <Text color="secondary">Escolha um dia para ver os horários.</Text>}
                   {data && (
-                    <RadioList
-                      label={`Horários livres em ${formatarDataLonga(data)}`}
-                      value={hora}
-                      onChange={(v) => (setAviso(''), setHora(v))}
-                      orientation="horizontal"
-                    >
-                      {horasDoDia.map((h) => (
-                        <RadioListItem key={h} value={h} label={h} />
-                      ))}
-                    </RadioList>
+                    <>
+                      <Text weight="medium">Horários livres em {formatarDataLonga(data)}</Text>
+                      {/* Botões soltos (não um grupo de rádio): quebram de linha quando há muitos horários. */}
+                      <HStack
+                        as="div"
+                        role="group"
+                        aria-label={`Horários livres em ${formatarDataLonga(data)}`}
+                        gap={2}
+                        wrap="wrap"
+                      >
+                        {horasDoDia.map((h) => (
+                          <ToggleButton
+                            key={h}
+                            label={h}
+                            size="lg"
+                            isPressed={hora === h}
+                            onPressedChange={() => (setAviso(''), setHora(h))}
+                          />
+                        ))}
+                      </HStack>
+                    </>
                   )}
                   {data && <Exemplo label="Horários de exemplo" />}
                 </VStack>

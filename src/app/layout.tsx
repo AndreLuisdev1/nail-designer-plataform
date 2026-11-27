@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: tokens.primitive.color.nude['50'].$value,
+  themeColor: tokens.primitive.color.taupe['50'].$value,
   width: 'device-width',
   initialScale: 1,
 };
@@ -35,7 +35,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         />
         <link
           rel="preload"
-          href="/fonts/bodoni-moda-latin-standard-normal.woff2"
+          href="/fonts/young-serif-latin-400-normal.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""
@@ -45,7 +45,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <Providers>
           <a
             href="#conteudo"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-2 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-3 focus:text-accent"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-2 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-3 focus:text-primary"
           >
             Pular para o conteúdo
           </a>

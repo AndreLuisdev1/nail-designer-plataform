@@ -25,7 +25,8 @@ Trocar o agendamento manual (WhatsApp + papel) por um sistema em que a cliente e
 
 ## Operating Context
 
-- Atendimento na casa da Rachel. Decisão do usuário: publicar o endereço completo. Ver "Em aberto".
+- Atendimento na casa da Rachel: Rua José Bonifácio, 422, Jardim Rafael, Caçapava-SP (publicado completo por decisão do usuário; ver "Em aberto").
+- Contato: (12) 99657-9458, WhatsApp e ligação. Instagram e e-mail ainda não informados.
 - Fuso fixo `America/Sao_Paulo`.
 - Prazo de cancelamento e reagendamento definido pela Rachel (padrão de 48 h).
 
@@ -37,8 +38,8 @@ Trocar o agendamento manual (WhatsApp + papel) por um sistema em que a cliente e
 
 ## Brand Commitments
 
-- **Nome do estúdio: ainda não definido.** Enquanto isso, usar "Estúdio Rachel" marcado como provisório. "Agenda da Rachel" é o nome do projeto.
-- **Logo: ainda não existe.** A logo em `design-system/brand/` é provisória e precisa ser fácil de trocar.
+- **Nome da marca: Rachel Ferreira Nail Designer** (confirmado em 27/11/2026, igual à logo). "Agenda da Rachel" é o nome do projeto.
+- **Logo: existe, mas sem arquivo oficial ainda.** A versão em `design-system/brand/` foi reconstruída a partir da imagem do Instagram (150 px): monograma RF vetorizado e nome refeito em Cinzel. Trocar pelo arquivo oficial (SVG ou PDF) quando chegar.
 - Nunca usar emoji como ícone. Nunca exibir dado fictício sem rótulo.
 - Direção visual: o usuário escolheu de propósito o padrão do setor (rosé e nude, serifa elegante), em vez das direções sorteadas, em 26/11/2026. A régua de acabamento é a de estúdios de beleza premium brasileiros (sem referência específica).
 

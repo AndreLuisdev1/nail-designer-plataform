@@ -10,18 +10,11 @@
 
 /* Fontes auto-hospedadas (public/fonts). Os nomes batem com tokens.json. */
 @font-face {
-  font-family: 'Bodoni Moda';
+  font-family: 'Young Serif';
   font-style: normal;
-  font-weight: 400 900;
+  font-weight: 400;
   font-display: swap;
-  src: url('/fonts/bodoni-moda-latin-standard-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Bodoni Moda';
-  font-style: italic;
-  font-weight: 400 900;
-  font-display: swap;
-  src: url('/fonts/bodoni-moda-latin-standard-italic.woff2') format('woff2');
+  src: url('/fonts/young-serif-latin-400-normal.woff2') format('woff2');
 }
 @font-face {
   font-family: Jost;

@@ -30,7 +30,7 @@ npm run dev          # http://localhost:3000
 ├─ design-system/          identidade visual (fonte única)
 │  ├─ tokens.json          cores, tipografia, espaçamento: edite aqui
 │  ├─ tokens.css           gerado, não editar
-│  ├─ brand/               logos provisórias e guia visual (demo.html)
+│  ├─ brand/               logos e guia visual (demo.html)
 │  └─ scripts/             verificação de contraste
 │
 ├─ src/
@@ -54,4 +54,4 @@ Pastas que começam com ponto (`.claude`, `.impeccable`, `.obsidian`) são de fe
 
 ## Trocar dados de exemplo pelos reais
 
-Tudo o que é fictício está em `src/data/` (e marcado no site com o selo "Exemplo"). A logo provisória está em `design-system/brand/`: veja o [README da marca](design-system/brand/README.md).
+Tudo o que é fictício está em `src/data/` (e marcado no site com o selo "Exemplo"). A logo (reconstruída até chegar o arquivo oficial) está em `design-system/brand/`: veja o [README da marca](design-system/brand/README.md).

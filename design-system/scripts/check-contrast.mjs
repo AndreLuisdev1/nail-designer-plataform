@@ -52,7 +52,15 @@ const pairs = [
   ['Botão secundário: texto / fundo', C + 'button.secondary-text', C + 'button.secondary-bg', 4.5],
   ['Botão secundário: texto / hover', C + 'button.secondary-text', C + 'button.secondary-bg-hover', 4.5],
   ['Botão secundário: borda / página', C + 'button.secondary-border', S + 'background.body', 3],
-  ['Botão primário: fundo / página', C + 'button.primary-bg', S + 'background.body', 3],
+  // O contorno do botão dourado vem da borda (o fundo claro sozinho teria 1,6:1).
+  ['Botão primário: borda / página', C + 'button.primary-border', S + 'background.body', 3],
+  ['Botão primário: borda / superfície', C + 'button.primary-border', S + 'background.surface', 3],
+  ['Indicador marcado (rádio, caixa, dia) / superfície', S + 'accent', S + 'background.surface', 3],
+  ['Indicador marcado (rádio, caixa, dia) / página', S + 'accent', S + 'background.body', 3],
+  ['Texto sobre indicador marcado', S + 'on.accent', S + 'accent', 4.5],
+  ['Horário marcado: borda / superfície', C + 'button.selected-border', S + 'background.surface', 3],
+  // Só para títulos de 24 px ou mais: a WCAG pede 3:1 em texto grande.
+  ['Ênfase de título grande / página', S + 'text.display-accent', S + 'background.body', 3],
   ['Campo: texto / fundo', C + 'input.text', C + 'input.bg', 4.5],
   ['Campo: placeholder / fundo', C + 'input.placeholder', C + 'input.bg', 4.5],
   ['Campo: rótulo / página', C + 'input.label', S + 'background.body', 4.5],

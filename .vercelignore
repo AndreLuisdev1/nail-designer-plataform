@@ -1,0 +1,8 @@
+.next
+node_modules
+tests/e2e/test-results
+playwright-report
+.impeccable
+.obsidian
+O-QUE-FOI-FEITO.md
+out

@@ -28,7 +28,8 @@ export default function Inicio() {
         <Grid columns={{minWidth: 300, max: 2}} gap={10} align="start">
           <VStack gap={5} className="lg:pt-8">
             <Heading level={1} type="display-1" id="inicio-titulo" textWrap="balance">
-              Unhas alongadas, <em className="text-accent">com hora marcada</em>
+              Unhas alongadas,{' '}
+              <em className="not-italic text-[color:var(--color-text-display-accent)]">com hora marcada</em>
             </Heading>
             <Text as="p" type="large" color="secondary" textWrap="pretty">
               Atendimento em casa, com a {marca.profissional}. Escolha um horário livre e confirme em poucos

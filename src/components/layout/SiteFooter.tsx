@@ -2,7 +2,8 @@ import {Grid} from '@astryxdesign/core/Grid';
 import {VStack} from '@astryxdesign/core/Layout';
 import {Link} from '@astryxdesign/core/Link';
 import {Text} from '@astryxdesign/core/Text';
-import {marca} from '@/data/marca';
+import {linkWhatsApp, marca} from '@/data/marca';
+import logo from '@design-system/brand/logo-principal-ouro.svg';
 
 const links = [
   {href: '/servicos', label: 'Serviços'},
@@ -22,9 +23,12 @@ export function SiteFooter() {
       <VStack gap={8} className="mx-auto w-full max-w-6xl px-4 py-12 md:px-6">
         <Grid columns={{minWidth: 220, max: 3}} gap={8} align="start">
           <VStack gap={2}>
-            <Text as="p" color="inherit" type="large" weight="medium">
-              {marca.nome}
-            </Text>
+            <img
+              src={logo.src}
+              alt={marca.nome}
+              width={Math.round((96 * logo.width) / logo.height)}
+              height={96}
+            />
             <Text as="p" color="inherit" type="supporting">
               {marca.descricao}
             </Text>
@@ -37,8 +41,8 @@ export function SiteFooter() {
             ))}
           </VStack>
           <VStack gap={2}>
-            <Link href="/contato" color="inherit" hasUnderline>
-              Fale com a {marca.profissional}
+            <Link href={linkWhatsApp} color="inherit" hasUnderline>
+              Fale com a {marca.profissional} no WhatsApp
             </Link>
             {legais.map((l) => (
               <Link key={l.href} href={l.href} color="inherit" hasUnderline>
@@ -48,8 +52,8 @@ export function SiteFooter() {
           </VStack>
         </Grid>
         <Text as="p" color="inherit" type="supporting">
-          Nome e logo provisórios. Serviços, valores, horários e contatos deste site são exemplos: nada do que
-          você preenche é enviado ou guardado.
+          Serviços, valores e horários deste site são exemplos: nada do que você preenche é enviado ou
+          guardado.
         </Text>
       </VStack>
     </VStack>

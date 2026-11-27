@@ -8,7 +8,9 @@ import {List} from '@astryxdesign/core/List';
 import {Heading, Text} from '@astryxdesign/core/Text';
 import {Exemplo} from '@/components/ui/Exemplo';
 import {Faixa} from '@/components/layout/Faixa';
-import {marca} from '@/data/marca';
+import {linkTelefone, linkWhatsApp, marca} from '@/data/marca';
+import {Link} from '@astryxdesign/core/Link';
+import {WhatsAppIcon} from '@/components/ui/WhatsAppIcon';
 import {expediente} from '@/data/agenda-exemplo';
 
 export const metadata: Metadata = {
@@ -31,7 +33,6 @@ export default function Contato() {
           <Heading level={1} id="contato-titulo">
             Contato
           </Heading>
-          <Exemplo label="Dados de exemplo" />
         </HStack>
         <Text as="p" type="large" color="secondary" textWrap="pretty">
           Para marcar, o jeito mais rápido é o agendamento online. Para dúvidas, fale com a{' '}
@@ -39,8 +40,8 @@ export default function Contato() {
         </Text>
       </VStack>
 
-      <Grid columns={{minWidth: 280, max: 2}} gap={6} align="start">
-        <Card padding={6}>
+      <Grid columns={{minWidth: 280, max: 2}} gap={6} align="stretch">
+        <Card padding={6} height="100%">
           <VStack gap={4}>
             <Heading level={2}>Endereço</Heading>
             <VStack as="address" gap={2} className="not-italic">
@@ -48,11 +49,9 @@ export default function Contato() {
                 {endereco.linha1}
                 <br />
                 {endereco.linha2}
-                <br />
-                CEP {endereco.cep}
               </Text>
               <Text as="p" color="secondary" type="supporting">
-                {endereco.referencia} Atendimento só com hora marcada.
+                Atendimento só com hora marcada.
               </Text>
             </VStack>
             <Heading level={2}>Fale com a {marca.profissional}</Heading>
@@ -60,23 +59,49 @@ export default function Contato() {
               <Item
                 as="li"
                 layout="inline"
-                label="WhatsApp"
-                endContent={<Text color="secondary">número a definir</Text>}
+                label="Telefone"
+                endContent={
+                  <HStack gap={3} vAlign="center">
+                    <Link href={linkTelefone} hasUnderline label={`Ligar para ${marca.telefone.exibicao}`}>
+                      {marca.telefone.exibicao}
+                    </Link>
+                    <Link href={linkWhatsApp} label={`Conversar no WhatsApp: ${marca.telefone.exibicao}`}>
+                      <WhatsAppIcon width={20} height={20} />
+                    </Link>
+                  </HStack>
+                }
               />
               <Item
                 as="li"
                 layout="inline"
                 label="Instagram"
-                endContent={<Text>{marca.instagram.usuario}</Text>}
+                endContent={
+                  <Link href={marca.instagram.url} hasUnderline isExternalLink>
+                    {marca.instagram.usuario}
+                  </Link>
+                }
               />
-              <Item as="li" layout="inline" label="E-mail" endContent={<Text>{marca.email.endereco}</Text>} />
+              <Item
+                as="li"
+                layout="inline"
+                label="E-mail"
+                endContent={
+                  <HStack gap={2} vAlign="center">
+                    <Text>{marca.email.endereco}</Text>
+                    <Exemplo />
+                  </HStack>
+                }
+              />
             </List>
           </VStack>
         </Card>
 
-        <Card padding={6}>
+        <Card padding={6} height="100%">
           <VStack gap={4}>
-            <Heading level={2}>Horários de atendimento</Heading>
+            <HStack gap={3} vAlign="center" wrap="wrap">
+              <Heading level={2}>Horários de atendimento</Heading>
+              <Exemplo />
+            </HStack>
             <List hasDividers density="compact" edge="flush">
               {horarios.map((h) => (
                 <Item

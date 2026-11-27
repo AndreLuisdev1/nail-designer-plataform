@@ -14,7 +14,7 @@ export default function Privacidade() {
         {
           titulo: 'Quem cuida dos seus dados',
           paragrafos: [
-            `A controladora dos dados é a ${marca.profissional}, responsável pelo ${marca.nome}. Para qualquer pedido sobre seus dados, escreva para ${marca.email.endereco} (endereço de exemplo, a definir).`,
+            `A controladora dos dados é ${marca.nomeCompleto}, nail designer. Para qualquer pedido sobre seus dados, escreva para ${marca.email.endereco} (endereço de exemplo, a definir).`,
           ],
         },
         {
